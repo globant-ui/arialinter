@@ -9,6 +9,11 @@ Session.vim
 /*.sublime-project
 *.sublime-workspace
 
+
+# -- NodeJS files ----------------------------
+
+/node_modules/
+
 # -- OS's files ------------------------------
 # Windows
 Thumbs.db
