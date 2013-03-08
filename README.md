@@ -8,6 +8,7 @@ Milestone 1: parse an HTML5 document and apply 1 rule.
 
 ##Resources:
 * Accessibility
+ * WAI-ARIA Authoring Practices: http://www.w3.org/TR/wai-aria-practices/ 
  * http://www.w3.org/TR/WCAG20-TECHS/html.html
  * http://dev.w3.org/html5/alt-techniques/
  * https://dvcs.w3.org/hg/aria-unofficial/raw-file/tip/index.html
