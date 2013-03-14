@@ -30,23 +30,10 @@ exports['Rules For Images'] = {
 
   'HaveAltAttr': function(test) {
     var linter = new arialinter.ALinter();
-    var uri = '<!doctype html><html><head></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
+    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
     linter.initialize(uri, function(){
-
-      //Add a default rule
-      linter.addRule('All img must have alt', 'Please add the alt attribute to this image', function(dom){
-        dom.$('img').each(function(index, item){
-
-          console.log('Image:' + item);
-
-          if (!dom.$(this).attr('alt')){
-            throw 'exception';
-          }
-        });
-      });
-
       test.ok(linter.evaluate(), 'All the images should have the alt attr');
       test.done();
     });
@@ -54,27 +41,36 @@ exports['Rules For Images'] = {
 
   'DoesntHaveAltAttr': function(test) {
     var linter = new arialinter.ALinter();
-    var uri = '<!doctype html><html><head></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" /></body> </html>';
+    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body> <blink>asdf</blink> </body> </html>';
 
 
     linter.initialize(uri, function(){
-
-      //Add a default rule
-      linter.addRule('All img must have alt', 'Please add the alt attribute to this image', function(dom){
-        dom.$('img').each(function(index, item){
-
-          console.log('Image:' + item);
-
-          if (!dom.$(this).attr('alt')){
-            throw 'exception';
-          }
-        });
-      });
-
       test.equal(linter.evaluate(), false, 'Should fail because images doesnt have alt');
       test.done();
     });
   },
+
+  'HaveIElement': function(test) {
+    var linter = new arialinter.ALinter();
+    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body> <i>asdf</i> </body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because it has i element');
+      test.done();
+    });
+  },
+
+  'DoesntHaveLangAttr': function(test) {
+    var linter = new arialinter.ALinter();
+    var uri = '<!doctype html><html><head><title>test1</title></head><body> <i>asdf</i> </body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because html tag doesnt have lang attribute');
+      test.done();
+    });
+  }
 
 };
 
