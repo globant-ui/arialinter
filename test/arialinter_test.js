@@ -29,7 +29,7 @@ exports['Rules For Images'] = {
   },
 
   'HaveAltAttr': function(test) {
-    var linter = new arialinter.ALinterClass();
+    var linter = new arialinter.ALinter();
     var uri = '<!doctype html><html><head></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
@@ -53,7 +53,7 @@ exports['Rules For Images'] = {
   },
 
   'DoesntHaveAltAttr': function(test) {
-    var linter = new arialinter.ALinterClass();
+    var linter = new arialinter.ALinter();
     var uri = '<!doctype html><html><head></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" /></body> </html>';
 
 
