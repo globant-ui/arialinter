@@ -31,5 +31,5 @@ Guideline | Rule N | Description
 
 ##License
 
-| Copyright (c) 2013 Globait UI Developers
-| Licensed under the MIT license.
+Copyright (c) 2013 Globait UI Developers
+Licensed under the MIT license.
