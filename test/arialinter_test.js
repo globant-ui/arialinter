@@ -92,6 +92,17 @@ exports['General Rules'] = {
       test.equal(linter.evaluate(), false, 'Should fail because it has u element');
       test.done();
     });
+  },
+
+  'HaveMarqueeBlinkElement': function(test) {
+    var linter = new arialinter.ALinter();
+    var uri = '<!doctype html><html><head><title>test1</title></head><body> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because it has marquee and blink elements');
+      test.done();
+    });
   }
 
 };
