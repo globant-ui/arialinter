@@ -1,6 +1,6 @@
 {
-  "name": "arialinter",
-  "description": "ArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.",
+  "name": "grunt-arialinter",
+  "description": "ArialLinter provides a simple accesibility linter for HTML documents.",
   "version": "0.1.0",
   "homepage": "https://github.com/globant-ui/arialinter",
   "repository": {
@@ -23,12 +23,17 @@
   "scripts": {
     "test": "grunt nodeunit"
   },
+  "main": "Gruntfile.js",
+  "bin": {
+    "grunt-sample": "bin/grunt-arialinter"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt-contrib-watch": "~0.2.0",
     "grunt": "~0.4.0",
-    "jsdom": ""
+    "jsdom": "*",
+    "async": "*"
   },
   "keywords": []
 }
