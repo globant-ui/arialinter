@@ -70,6 +70,28 @@ exports['General Rules'] = {
       test.equal(linter.evaluate(), false, 'Should fail because html tag doesnt have lang attribute');
       test.done();
     });
+  },
+
+  'HaveBElement': function(test) {
+    var linter = new arialinter.ALinter();
+    var uri = '<!doctype html><html><head><title>test1</title></head><body> <b>asdf</b> </body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because it has b element');
+      test.done();
+    });
+  },
+
+  'HaveUElement': function(test) {
+    var linter = new arialinter.ALinter();
+    var uri = '<!doctype html><html><head><title>test1</title></head><body> <u>asdf</u> </body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because it has u element');
+      test.done();
+    });
   }
 
 };
