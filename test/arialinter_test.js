@@ -22,7 +22,7 @@ var arialinter = require('../lib/arialinter.js');
     test.ifError(value)
 */
 
-exports['Rules For Images'] = {
+exports['General Rules'] = {
 
   setUp: function(done) {
     done();
