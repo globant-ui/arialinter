@@ -12,10 +12,10 @@ Guideline | Rule N | Description
 2.2       |  25    | No blink or marquee elements.
 2.4       |  26    | Frame must have title attribute.
 3.1       |  45    | All pages should have lang attribute in html tag.
-4.1       |  17    | Do not use <font> element.
-4.1       |  58    | Do not use <b> element.
-4.1       |  59    | Do not use <i> element.
-4.1       |  60    | Do not use <u> element.
+4.1       |  17    | Do not use ```<font>``` element.
+4.1       |  58    | Do not use ```<b>``` element.
+4.1       |  59    | Do not use ```<i>``` element.
+4.1       |  60    | Do not use ```<u>``` element.
 
 
 
@@ -31,5 +31,6 @@ Guideline | Rule N | Description
 
 ##License
 
-Copyright (c) 2013 Globait UI Developers
+Copyright (c) 2013 Globant UI Developers
+
 Licensed under the MIT license.
