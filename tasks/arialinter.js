@@ -6,12 +6,12 @@
  * Licensed under the MIT license.
  */
 
-var arialinter = require('../lib/arialinter.js');
+var ArialLinter = require('../lib/arialinter.js').ArialLinter;
 var async = require('async');
 
 
 module.exports = function(grunt) {
-
+  'use strict';
   // ==========================================================================
   // TASKS
   // ==========================================================================
@@ -22,27 +22,24 @@ module.exports = function(grunt) {
     // Tell grunt this task is asynchronous.
     var done = this.async();
 
-    var linter = new arialinter.ALinter();
+    var linter = new ArialLinter();
     var x = 0;
 
-    async.each(this.data, function(uri, callback){
-
-      linter.initialize(uri, function(){
+    async.each(this.data, function(uri, callback) {
+      x = x + 1;
+      linter.initialize(uri, function() {
         if (linter.evaluate()){
-          grunt.log.write('The HTML of the file ' + ++x + ' seems to be valid according the WCAG 2.0 spec.\n');
+          grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n');
           callback();
-        }
-        else{
-          grunt.warn('The HTML of the file ' + ++x + ' doenst seem to be valid according the WCAG 2.0 spec.\n');
+        } else {
+          grunt.warn('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n');
           callback();
         }
       });
-    }, function(err){
-        if (!err){
+    }, function(err) {
+        if (!err) {
           done();
         }
     });
-
   });
-
 };
