@@ -37,10 +37,8 @@ module.exports = function(grunt) {
           callback();
         }
       });
-    }, function(err) {
-        if (!err) {
-          done();
-        }
+    }, function() {
+        done();
     });
   });
 };
