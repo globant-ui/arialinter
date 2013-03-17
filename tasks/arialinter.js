@@ -26,8 +26,9 @@ module.exports = function(grunt) {
     var x = 0;
 
     async.each(this.data, function(uri, callback) {
-      x = x + 1;
       linter.initialize(uri, function() {
+        x++;
+
         if (linter.evaluate()){
           grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n');
           callback();
