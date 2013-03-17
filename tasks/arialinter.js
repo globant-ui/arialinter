@@ -12,10 +12,6 @@ var async = require('async');
 
 module.exports = function(grunt) {
   'use strict';
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
-
 
   grunt.registerMultiTask('arialinter', 'ArialLinter provides a simple accesibility linter for HTML documents.', function() {
 
