@@ -21,7 +21,7 @@
     "node": ">= 0.6.0"
   },
   "scripts": {
-    "test": "grunt nodeunit"
+    "test": "grunt test"
   },
   "main": "Gruntfile.js",
   "bin": {
