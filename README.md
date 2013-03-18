@@ -1,4 +1,4 @@
-ArialLinter
+ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
 ============
 ArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.
 
