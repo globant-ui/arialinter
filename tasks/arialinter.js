@@ -6,6 +6,7 @@
  * Licensed under the MIT license.
  */
 
+
 var ArialLinter = require('../lib/arialinter.js').ArialLinter;
 var async = require('async');
 
