@@ -12,10 +12,6 @@ var async = require('async');
 
 module.exports = function(grunt) {
   'use strict';
-  // ==========================================================================
-  // TASKS
-  // ==========================================================================
-
 
   grunt.registerMultiTask('arialinter', 'ArialLinter provides a simple accesibility linter for HTML documents.', function() {
 
@@ -26,8 +22,9 @@ module.exports = function(grunt) {
     var x = 0;
 
     async.each(this.data, function(uri, callback) {
-      x = x + 1;
       linter.initialize(uri, function() {
+        x++;
+
         if (linter.evaluate()){
           grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n');
           callback();
@@ -36,10 +33,8 @@ module.exports = function(grunt) {
           callback();
         }
       });
-    }, function(err) {
-        if (!err) {
-          done();
-        }
+    }, function() {
+        done();
     });
   });
 };
