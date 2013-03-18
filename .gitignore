@@ -24,6 +24,7 @@ $RECYCLE.BIN/
 # Linux
 .*
 !.gitignore
+!.travis.yml
 *~
 
 # Mac OS X
