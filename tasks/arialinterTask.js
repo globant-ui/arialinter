@@ -30,7 +30,7 @@ module.exports = function(grunt) {
           grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n');
           callback();
         } else {
-          grunt.warn('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n');
+          grunt.log.write('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n');
           callback();
         }
       });
