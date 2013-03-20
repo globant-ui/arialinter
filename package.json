@@ -30,7 +30,8 @@
     "grunt-contrib-watch": "~0.2.0",
     "grunt": "~0.4.0",
     "jsdom": "*",
-    "async": "*"
+    "async": "*",
+    "colors": "*"
   },
   "keywords": []
 }
