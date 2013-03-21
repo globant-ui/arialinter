@@ -31,7 +31,8 @@
     "grunt": "~0.4.0",
     "jsdom": "*",
     "async": "*",
-    "colors": "*"
+    "colors": "*",
+    "commander": ""
   },
   "keywords": []
 }
