@@ -103,6 +103,17 @@ exports['General Rules'] = {
       test.equal(linter.evaluate(), false, 'Should fail because it has marquee and blink elements');
       test.done();
     });
+  },
+
+  'tableHasSummary': function(test) {
+    var linter = new ArialLinter();
+    var uri = '<!doctype html><html><head><title>test1</title></head><body> <table></table></body> </html>';
+
+
+    linter.initialize(uri, function(){
+      test.equal(linter.evaluate(), false, 'Should fail because the table doenst have summary');
+      test.done();
+    });
   }
 
 };
