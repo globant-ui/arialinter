@@ -32,7 +32,8 @@
     "jsdom": "*",
     "async": "*",
     "colors": "*",
-    "commander": ""
+    "commander": "*",
+    "color": "*"
   },
   "keywords": []
 }
