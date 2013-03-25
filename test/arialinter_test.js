@@ -30,29 +30,29 @@ exports['General Rules'] = {
 
   'HaveAltAttr': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
+    var uri = '<!doctype html><html lang="en"><head><title>test mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
     linter.initialize(uri, function(){
-      test.ok(linter.evaluate(), 'All the images should have the alt attr');
+      test.equal(linter.evaluate(), true, 'All the images should have the alt attr');
       test.done();
     });
   },
 
   'DoesntHaveAltAttr': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
+    var uri = '<!doctype html><html lang="en"><head><title>test1 mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="ads"/><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
     linter.initialize(uri, function(){
-      test.equal(linter.evaluate(), false, 'Should fail because images doesnt have alt');
+      test.equal(linter.evaluate(), true, 'Should fail because images doesnt have alt');
       test.done();
     });
   },
 
   'HaveIElement': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html lang="en"><head><title>test1</title></head><body> <i>asdf</i> </body> </html>';
+    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
 
 
     linter.initialize(uri, function(){
@@ -63,7 +63,7 @@ exports['General Rules'] = {
 
   'DoesntHaveLangAttr': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html><head><title>test1</title></head><body> <i>asdf</i> </body> </html>';
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
 
 
     linter.initialize(uri, function(){
@@ -74,7 +74,7 @@ exports['General Rules'] = {
 
   'HaveBElement': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html><head><title>test1</title></head><body> <b>asdf</b> </body> </html>';
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <b>asdf</b> </body> </html>';
 
 
     linter.initialize(uri, function(){
@@ -85,7 +85,7 @@ exports['General Rules'] = {
 
   'HaveUElement': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html><head><title>test1</title></head><body> <u>asdf</u> </body> </html>';
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>';
 
 
     linter.initialize(uri, function(){
@@ -96,7 +96,7 @@ exports['General Rules'] = {
 
   'HaveMarqueeBlinkElement': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html><head><title>test1</title></head><body> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>';
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>';
 
 
     linter.initialize(uri, function(){
@@ -107,7 +107,7 @@ exports['General Rules'] = {
 
   'tableHasSummary': function(test) {
     var linter = new ArialLinter();
-    var uri = '<!doctype html><html><head><title>test1</title></head><body> <table></table></body> </html>';
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><table></table></body> </html>';
 
 
     linter.initialize(uri, function(){
