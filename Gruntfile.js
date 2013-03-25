@@ -9,9 +9,7 @@ module.exports = function(grunt) {
     },
     arialinter: {
       files: [
-        '<!doctype html><html lang="en"><head><title>test1</title></head><body> <p>hola</p> </body> </html>',
-        '<!doctype html><html lang="en"><head><title>test1</title></head><body> <u>hola</u> </body> </html>',
-        '<!doctype html><html lang="en"><head><title>test1</title></head><body> <img src="asdf.jpg" /> </body> </html>'
+        '<!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> </body> </html>'
       ]
     }
   });
