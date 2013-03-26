@@ -3,6 +3,20 @@ ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png
 ArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.
 
 
+##Usage
+
+Display all the rules
+  $ node index --rules
+
+Execute the linter just for templates
+  $ node index.js --templates test/testFiles/template.html
+
+Execute the linter using all the rules of the level A
+  $ node index.js --level A  test/testFiles/index.html
+
+Execute the linter using all the rules of the level A and the rules that just apply for templates
+  $ node index.js --level A --templates test/testFiles/index.html
+
 
 ##Rules Missing
 
