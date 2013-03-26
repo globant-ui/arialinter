@@ -36,7 +36,7 @@ Guideline | Rule N | Description
 4.1       |   69   | Required properties and states should be defined Last updated: 2011-03-31
 4.1       |   70   | Required properties and states must not be empty Last updated: 2011-03-31
 4.1       |   71   | Role value must be valid Last updated: 2011-03-31
-4.1       |   72   |Check that 'ARIA-' attributes are valid properties and states Last updated: 2011-03-31
+4.1       |   72   | Check that 'ARIA-' attributes are valid properties and states Last updated: 2011-03-31
 
 
 
