@@ -12,15 +12,15 @@ $ node index --rules
 
 Execute the linter just for templates
 ```javascript
-$ node index.js --templates test/testFiles/template.html
+$ node index --templates test/testFiles/template.html
 ```
 Execute the linter using all the rules of the level A
 ```javascript
-$ node index.js --level A  test/testFiles/index.html
+$ node index --level A  test/testFiles/index.html
 ```
 Execute the linter using all the rules of the level A and the rules that just apply for templates
 ```javascript
-$ node index.js --level A --templates test/testFiles/index.html
+$ node index --level A --templates test/testFiles/index.html
 ```
 
 ##Rules Missing
