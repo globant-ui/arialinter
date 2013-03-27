@@ -6,17 +6,22 @@ ArialLinter main goal is to provide a simple accesibility linter for HTML docume
 ##Usage
 
 Display all the rules
-  $ node index --rules
+```javascript
+$ node index --rules
+```
 
 Execute the linter just for templates
-  $ node index.js --templates test/testFiles/template.html
-
+```javascript
+$ node index --templates test/testFiles/template.html
+```
 Execute the linter using all the rules of the level A
-  $ node index.js --level A  test/testFiles/index.html
-
+```javascript
+$ node index --level A  test/testFiles/index.html
+```
 Execute the linter using all the rules of the level A and the rules that just apply for templates
-  $ node index.js --level A --templates test/testFiles/index.html
-
+```javascript
+$ node index --level A --templates test/testFiles/index.html
+```
 
 ##Rules Missing
 
