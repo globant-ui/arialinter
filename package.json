@@ -27,13 +27,15 @@
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.1.2",
     "grunt-contrib-watch": "~0.2.0",
+    "colors": "*",
+    "grunt-contrib-copy": "~0.4.1"
+  },
+  "dependencies": {
     "grunt": "~0.4.0",
     "jsdom": "*",
     "async": "*",
-    "colors": "*",
     "commander": "*",
-    "color": "*",
-    "grunt-contrib-copy": "~0.4.1"
+    "color": "*"
   },
   "keywords": []
 }
