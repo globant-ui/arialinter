@@ -41,7 +41,7 @@ module.exports = function(grunt) {
         linter.initialize(uri, function() {
           x++;
 
-          if (linter.evaluate()){
+          if (linter.evaluate(options)){
             grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n'.info);
             callback();
           } else {
