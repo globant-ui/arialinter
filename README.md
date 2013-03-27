@@ -71,28 +71,32 @@ linter.initialize(fileOrUrl, function() {
 
 You can also run AriaLinter from the terminal
 
+```shell
+$ npm install -g arialinter
+```
+
 Display all the rules
 
 ```javascript
-$ node index --rules
+$ arialinter --rules
 ```
 
 Execute the linter just for templates
 
 ```javascript
-$ node index --templates test/testFiles/template.html
+$ arialinter --templates test/testFiles/template.html
 ```
 
 Execute the linter using all the rules of the level A
 
 ```javascript
-$ node index --level A  test/testFiles/index.html
+$ arialinter --level A  test/testFiles/index.html
 ```
 
 Execute the linter using all the rules of the level A and the rules that just apply for templates
 
 ```javascript
-$ node index --level A --templates test/testFiles/index.html
+$ arialinter --level A --templates test/testFiles/index.html
 ```
 
 
