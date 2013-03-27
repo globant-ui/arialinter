@@ -29,12 +29,18 @@ grunt.initConfig({
     files: [
       'https://www.google.com/',
       '<!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> <div class="entry"> <p>{{title}}</p> <h2>By {{author.name}}</h2> <div class="body">{{body}}</div></div> </body> </html>'
-    ]
+    ],
+    options: {
+      templates: true,
+      levels: 'A'
+    }
   }
 });
 
 grunt.registerTask('default', ['arialinter']);
 ```
+
+Note: If you dont specify a level, it will run for all the levels.
 
 ### Nodejs
 
