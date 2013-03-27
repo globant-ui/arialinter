@@ -1,7 +1,7 @@
 {
-  "name": "grunt-arialinter",
-  "description": "ArialLinter provides a simple accesibility linter for HTML documents.",
-  "version": "0.1.0",
+  "name": "arialinter",
+  "description": "AriaLinter provides a simple accesibility linter for HTML documents.",
+  "version": "0.1.1",
   "homepage": "https://github.com/globant-ui/arialinter",
   "repository": {
     "type": "git",
@@ -16,24 +16,16 @@
       "url": "https://github.com/globant-ui/arialinter/blob/master/LICENSE-MIT"
     }
   ],
-  "main": "Gruntfile.js",
+  "main": "index.js",
   "engines": {
     "node": ">= 0.6.0"
   },
-  "scripts": {
-    "test": "grunt test"
-  },
-  "devDependencies": {
-    "grunt-contrib-jshint": "~0.1.1",
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-watch": "~0.2.0",
-    "grunt": "~0.4.0",
+  "dependencies": {
     "jsdom": "*",
     "async": "*",
     "colors": "*",
     "commander": "*",
-    "color": "*",
-    "grunt-contrib-copy": "~0.4.1"
+    "color": "*"
   },
   "keywords": []
 }

@@ -13,6 +13,8 @@ Session.vim
 # -- NodeJS files ----------------------------
 
 /node_modules/
+/build/node_modules/
+/example/node_modules/
 
 # -- OS's files ------------------------------
 # Windows

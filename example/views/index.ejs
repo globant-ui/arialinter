@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AriaLinter test</title>
+</head>
+<body>
+  <% if (message) { %>
+    <div class="message">
+      <p><%= message %></p>
+    </div>
+  <% } %>
+  <form action="/lint" method="POST">
+    <textarea name="htmlContent" cols="30" rows="10"><!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> <div class="entry"> <p>{{title}}</p> <h2>By {{author.name}}</h2> <div class="body">{{body}}</div></div> </body> </html></textarea>
+
+    <button type="submit">Send</button>
+  </form>
+</body>
+</html>
