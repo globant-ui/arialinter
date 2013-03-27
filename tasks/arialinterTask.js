@@ -36,20 +36,51 @@ module.exports = function(grunt) {
     var linter = new ArialLinter();
     var x = 0;
 
-    async.each(this.data, function(uri, callback) {
-      linter.initialize(uri, function() {
-        x++;
+    var executeLinter = function(files, done, options) {
+      async.each(files, function(uri, callback) {
+        linter.initialize(uri, function() {
+          x++;
 
-        if (linter.evaluate()){
-          grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n'.info);
-          callback();
-        } else {
-          grunt.log.write('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n'.error);
-          callback();
-        }
+          if (linter.evaluate()){
+            grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n'.info);
+            callback();
+          } else {
+            grunt.log.write('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n'.error);
+            callback();
+          }
+        });
+      }, function() {
+          done();
       });
-    }, function() {
-        done();
-    });
+    };
+
+
+    if ((this.options().templates) && (this.options().levels)) {
+        console.log('for templates and with level');
+        executeLinter(this.data, done, {
+          level: this.options().levels,
+          template: true
+        });
+      } else {
+        if (this.options().templates) {
+          console.log('only for templates');
+          executeLinter(this.data, done, {
+            template: true
+          });
+        }
+        else {
+          if (this.options().levels) {
+            console.log('only for level');
+            executeLinter(this.data, done, {
+              level: this.options().levels
+            });
+          }
+          else {
+            console.log('Applying default linter..');
+            executeLinter(this.data, done);
+          }
+        }
+    }
+
   });
 };
