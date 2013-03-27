@@ -57,27 +57,27 @@ module.exports = function(grunt) {
 
     if ((this.options().templates) && (this.options().levels)) {
         console.log('for templates and with level');
-        executeLinter(this.data, done, {
+        executeLinter(this.filesSrc, done, {
           level: this.options().levels,
           template: true
         });
       } else {
         if (this.options().templates) {
           console.log('only for templates');
-          executeLinter(this.data, done, {
+          executeLinter(this.filesSrc, done, {
             template: true
           });
         }
         else {
           if (this.options().levels) {
             console.log('only for level');
-            executeLinter(this.data, done, {
+            executeLinter(this.filesSrc, done, {
               level: this.options().levels
             });
           }
           else {
             console.log('Applying default linter..');
-            executeLinter(this.data, done);
+            executeLinter(this.filesSrc, done);
           }
         }
     }
