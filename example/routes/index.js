@@ -10,12 +10,12 @@ exports.lint = function(req, res) {
     if (linter.evaluate()) {
       console.log('success');
       req.flash('info', 'Linter executed successfully');
-      res.redirect('/');
     } else {
       console.log('failed');
       req.flash('info', 'Linter failed');
-      res.redirect('/');
     }
+    
+    res.redirect('/');
   });
 };
 
