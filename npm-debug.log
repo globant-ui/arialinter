@@ -1,0 +1,200 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'publish' ]
+2 info using npm@1.1.62
+3 info using node@v0.8.11
+4 verbose publish [ '.' ]
+5 verbose read json /Library/WebServer/Documents/arialinter/package.json
+6 verbose cache add [ '.', null ]
+7 silly cache add name=undefined spec="." args=[".",null]
+8 verbose parsed url { pathname: '.', path: '.', href: '.' }
+9 silly lockFile 3a52ce78- .
+10 verbose lock . /Users/estebanabait/.npm/3a52ce78-.lock
+11 verbose read json package.json
+12 verbose tar pack [ '/Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz',
+12 verbose tar pack   '.' ]
+13 verbose tarball /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz
+14 verbose folder .
+15 info prepublish grunt-arialinter@0.1.0
+16 silly lockFile a142f177-7019-0-20314354868605733-tmp-tgz /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz
+17 verbose lock /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz /Users/estebanabait/.npm/a142f177-7019-0-20314354868605733-tmp-tgz.lock
+18 silly lockFile a142f177-7019-0-20314354868605733-tmp-tgz /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz
+19 verbose tar unpack /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/tmp.tgz
+20 silly lockFile eff91928-7019-0-20314354868605733-package /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package
+21 verbose lock /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package /Users/estebanabait/.npm/eff91928-7019-0-20314354868605733-package.lock
+22 silly gunzTarPerm modes [ '755', '644' ]
+23 silly gunzTarPerm extractEntry package.json
+24 silly gunzTarPerm extractEntry .npmignore
+25 silly gunzTarPerm extractEntry README.md
+26 silly gunzTarPerm extractEntry Gruntfile.js
+27 silly gunzTarPerm extractEntry index.js
+28 silly gunzTarPerm extractEntry build/package.json
+29 silly gunzTarPerm extractEntry build/README.md
+30 silly gunzTarPerm extractEntry build/index.js
+31 silly gunzTarPerm extractEntry build/lib/arialinter.js
+32 silly gunzTarPerm extractEntry build/lib/reporter.js
+33 silly gunzTarPerm extractEntry build/lib/rule.js
+34 silly gunzTarPerm extractEntry build/lib/rulefactory.js
+35 silly gunzTarPerm extractEntry build/lib/cli/node.js
+36 silly gunzTarPerm extractEntry build/lib/formatters/text.js
+37 silly gunzTarPerm extractEntry build/lib/rules/adaptable.js
+38 silly gunzTarPerm extractEntry build/lib/rules/distinguishable.js
+39 silly gunzTarPerm extractEntry build/lib/rules/headingsAndLabels.js
+40 silly gunzTarPerm extractEntry build/lib/rules/inputAssistance.js
+41 silly gunzTarPerm extractEntry build/lib/rules/linkPurpose.js
+42 silly gunzTarPerm extractEntry build/lib/rules/navigable.js
+43 silly gunzTarPerm extractEntry build/lib/rules/pageTitled.js
+44 silly gunzTarPerm extractEntry build/lib/rules/readable.js
+45 silly gunzTarPerm extractEntry build/lib/rules/textAlternatives.js
+46 silly gunzTarPerm extractEntry .travis.yml
+47 silly gunzTarPerm extractEntry LICENSE-MIT
+48 silly gunzTarPerm extractEntry tasks/arialinterTask.js
+49 silly gunzTarPerm extractEntry example/package.json
+50 silly gunzTarPerm extractEntry example/app.js
+51 silly gunzTarPerm extractEntry example/public/stylesheets/style.css
+52 silly gunzTarPerm extractEntry example/routes/index.js
+53 silly gunzTarPerm extractEntry example/views/index.ejs
+54 silly gunzTarPerm extractEntry test/arialinter_test.js
+55 silly gunzTarPerm extractEntry test/testFiles/index.html
+56 silly gunzTarPerm extractEntry test/testFiles/template.html
+57 silly gunzTarPerm extractEntry lib/arialinter.js
+58 silly gunzTarPerm extractEntry lib/reporter.js
+59 silly gunzTarPerm extractEntry lib/rule.js
+60 silly gunzTarPerm extractEntry lib/rulefactory.js
+61 silly gunzTarPerm extractEntry lib/cli/node.js
+62 silly gunzTarPerm extractEntry lib/formatters/text.js
+63 silly gunzTarPerm extractEntry lib/rules/adaptable.js
+64 silly gunzTarPerm extractEntry lib/rules/distinguishable.js
+65 silly gunzTarPerm extractEntry lib/rules/headingsAndLabels.js
+66 silly gunzTarPerm extractEntry lib/rules/inputAssistance.js
+67 silly gunzTarPerm extractEntry lib/rules/linkPurpose.js
+68 silly gunzTarPerm extractEntry lib/rules/navigable.js
+69 silly gunzTarPerm extractEntry lib/rules/pageTitled.js
+70 silly gunzTarPerm extractEntry lib/rules/readable.js
+71 silly gunzTarPerm extractEntry lib/rules/textAlternatives.js
+72 verbose read json /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package/package.json
+73 silly lockFile eff91928-7019-0-20314354868605733-package /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package
+74 verbose from cache /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package/package.json
+75 verbose tar pack [ '/Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz',
+75 verbose tar pack   '/Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package' ]
+76 verbose tarball /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz
+77 verbose folder /Users/estebanabait/tmp/npm-14547/1364410927019-0.20314354868605733/package
+78 silly lockFile 1db43e69-unt-arialinter-0-1-0-package-tgz /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz
+79 verbose lock /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz /Users/estebanabait/.npm/1db43e69-unt-arialinter-0-1-0-package-tgz.lock
+80 silly lockFile 1db43e69-unt-arialinter-0-1-0-package-tgz /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz
+81 silly lockFile 179b7989-m-grunt-arialinter-0-1-0-package /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package
+82 verbose lock /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package /Users/estebanabait/.npm/179b7989-m-grunt-arialinter-0-1-0-package.lock
+83 silly lockFile 179b7989-m-grunt-arialinter-0-1-0-package /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package
+84 verbose tar unpack /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz
+85 silly lockFile 179b7989-m-grunt-arialinter-0-1-0-package /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package
+86 verbose lock /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package /Users/estebanabait/.npm/179b7989-m-grunt-arialinter-0-1-0-package.lock
+87 silly gunzTarPerm modes [ '755', '644' ]
+88 silly gunzTarPerm extractEntry package.json
+89 silly gunzTarPerm extractEntry README.md
+90 silly gunzTarPerm extractEntry Gruntfile.js
+91 silly gunzTarPerm extractEntry index.js
+92 silly gunzTarPerm extractEntry lib/arialinter.js
+93 silly gunzTarPerm extractEntry lib/reporter.js
+94 silly gunzTarPerm extractEntry lib/rule.js
+95 silly gunzTarPerm extractEntry lib/rulefactory.js
+96 silly gunzTarPerm extractEntry lib/cli/node.js
+97 silly gunzTarPerm extractEntry lib/formatters/text.js
+98 silly gunzTarPerm extractEntry lib/rules/adaptable.js
+99 silly gunzTarPerm extractEntry lib/rules/distinguishable.js
+100 silly gunzTarPerm extractEntry lib/rules/headingsAndLabels.js
+101 silly gunzTarPerm extractEntry lib/rules/inputAssistance.js
+102 silly gunzTarPerm extractEntry lib/rules/linkPurpose.js
+103 silly gunzTarPerm extractEntry lib/rules/navigable.js
+104 silly gunzTarPerm extractEntry lib/rules/pageTitled.js
+105 silly gunzTarPerm extractEntry lib/rules/readable.js
+106 silly gunzTarPerm extractEntry lib/rules/textAlternatives.js
+107 silly gunzTarPerm extractEntry build/package.json
+108 silly gunzTarPerm extractEntry build/README.md
+109 silly gunzTarPerm extractEntry build/index.js
+110 silly gunzTarPerm extractEntry build/lib/arialinter.js
+111 silly gunzTarPerm extractEntry build/lib/reporter.js
+112 silly gunzTarPerm extractEntry build/lib/rule.js
+113 silly gunzTarPerm extractEntry build/lib/rulefactory.js
+114 silly gunzTarPerm extractEntry build/lib/cli/node.js
+115 silly gunzTarPerm extractEntry build/lib/formatters/text.js
+116 silly gunzTarPerm extractEntry build/lib/rules/adaptable.js
+117 silly gunzTarPerm extractEntry build/lib/rules/distinguishable.js
+118 silly gunzTarPerm extractEntry build/lib/rules/headingsAndLabels.js
+119 silly gunzTarPerm extractEntry build/lib/rules/inputAssistance.js
+120 silly gunzTarPerm extractEntry build/lib/rules/linkPurpose.js
+121 silly gunzTarPerm extractEntry build/lib/rules/navigable.js
+122 silly gunzTarPerm extractEntry build/lib/rules/pageTitled.js
+123 silly gunzTarPerm extractEntry build/lib/rules/readable.js
+124 silly gunzTarPerm extractEntry build/lib/rules/textAlternatives.js
+125 silly gunzTarPerm extractEntry LICENSE-MIT
+126 silly gunzTarPerm extractEntry .travis.yml
+127 silly gunzTarPerm extractEntry example/package.json
+128 silly gunzTarPerm extractEntry example/app.js
+129 silly gunzTarPerm extractEntry example/public/stylesheets/style.css
+130 silly gunzTarPerm extractEntry example/routes/index.js
+131 silly gunzTarPerm extractEntry example/views/index.ejs
+132 silly gunzTarPerm extractEntry tasks/arialinterTask.js
+133 silly gunzTarPerm extractEntry test/arialinter_test.js
+134 silly gunzTarPerm extractEntry test/testFiles/index.html
+135 silly gunzTarPerm extractEntry test/testFiles/template.html
+136 verbose read json /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package/package.json
+137 silly lockFile 179b7989-m-grunt-arialinter-0-1-0-package /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package
+138 silly shasum updated bytes 19462
+139 info shasum fa605df828260b9a22f35b27ca576b41deff2e56
+139 info shasum /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz
+140 verbose from cache /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package/package.json
+141 verbose chmod /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz 644
+142 verbose chown /Users/estebanabait/.npm/grunt-arialinter/0.1.0/package.tgz [ 501, 20 ]
+143 silly lockFile 3a52ce78- .
+144 silly publish { name: 'grunt-arialinter',
+144 silly publish   description: 'ArialLinter provides a simple accesibility linter for HTML documents.',
+144 silly publish   version: '0.1.0',
+144 silly publish   homepage: 'https://github.com/globant-ui/arialinter',
+144 silly publish   repository:
+144 silly publish    { type: 'git',
+144 silly publish      url: 'https://github.com/globant-ui/arialinter.git' },
+144 silly publish   bugs: { url: 'https://github.com/globant-ui/arialinter/issues' },
+144 silly publish   licenses:
+144 silly publish    [ { type: 'MIT',
+144 silly publish        url: 'https://github.com/globant-ui/arialinter/blob/master/LICENSE-MIT' } ],
+144 silly publish   main: 'Gruntfile.js',
+144 silly publish   engines: { node: '>= 0.6.0' },
+144 silly publish   scripts: { test: 'grunt test' },
+144 silly publish   devDependencies:
+144 silly publish    { 'grunt-contrib-jshint': '~0.1.1',
+144 silly publish      'grunt-contrib-nodeunit': '~0.1.2',
+144 silly publish      'grunt-contrib-watch': '~0.2.0',
+144 silly publish      colors: '*',
+144 silly publish      'grunt-contrib-copy': '~0.4.1' },
+144 silly publish   dependencies:
+144 silly publish    { grunt: '~0.4.0',
+144 silly publish      jsdom: '*',
+144 silly publish      async: '*',
+144 silly publish      commander: '*',
+144 silly publish      color: '*' },
+144 silly publish   keywords: [],
+144 silly publish   readme: 'ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)\n============\nArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.\n\n\n## Getting Started\n\n### Grunt task\n\nThis plugin requires Grunt `~0.4.0`\n\nIf you haven\'t used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you\'re familiar with that process, you may install this plugin with this command:\n\n```shell\n$ npm install grunt-arialinter --save-dev\n```\n\nOnce the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:\n\n```js\ngrunt.loadNpmTasks(\'grunt-arialinter\');\n```\n\nAnd then you should add the task, you can lint files and url\'s:\n\n```js\ngrunt.initConfig({\n  arialinter: {\n    files: [\n      \'https://www.google.com/\',\n      \'<!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> <div class="entry"> <p>{{title}}</p> <h2>By {{author.name}}</h2> <div class="body">{{body}}</div></div> </body> </html>\'\n    ],\n    options: {\n      templates: true,\n      levels: \'A\'\n    }\n  }\n});\n\ngrunt.registerTask(\'default\', [\'arialinter\']);\n```\n\nNote: If you dont specify a level, it will run for all the levels.\n\n### Nodejs\n\nYou can also use it with nodejs like a regular library\n\nInstall the package from npm\n\n```shell\n$ npm install arialinter --save-dev\n```\n\nAnd then you can consume the library:\n\n```javascript\nvar ArialLinter = require(\'arialinter\');\nvar linter = new ArialLinter();\n\nlinter.initialize(fileOrUrl, function() {\n  if (linter.evaluate()){\n    console.log(\'success\');\n  } else {\n    console.log(\'failed\');\n  }\n});\n```\n\n### CLI\n\nYou can also run AriaLinter from the terminal\n\nDisplay all the rules\n\n```javascript\n$ node index --rules\n```\n\nExecute the linter just for templates\n\n```javascript\n$ node index --templates test/testFiles/template.html\n```\n\nExecute the linter using all the rules of the level A\n\n```javascript\n$ node index --level A  test/testFiles/index.html\n```\n\nExecute the linter using all the rules of the level A and the rules that just apply for templates\n\n```javascript\n$ node index --level A --templates test/testFiles/index.html\n```\n\n\n##Resources:\n* Accessibility\n * WAI-ARIA Authoring Practices: http://www.w3.org/TR/wai-aria-practices/\n * http://www.w3.org/TR/WCAG20-TECHS/html.html\n * http://dev.w3.org/html5/alt-techniques/\n * https://dvcs.w3.org/hg/aria-unofficial/raw-file/tip/index.html\n * http://www.openajax.org/member/wiki/Accessibility_-_WCAG20_Validation_Rules\n* NodeJS HTML Parser\n * [jsdom](https://github.com/tmpvar/jsdom)\n\n\n##License\n\nCopyright (c) 2013 Globant UI Developers\n\nLicensed under the MIT license.\n',
+144 silly publish   _id: 'grunt-arialinter@0.1.0',
+144 silly publish   dist: { shasum: 'fa605df828260b9a22f35b27ca576b41deff2e56' } }
+145 verbose url raw grunt-arialinter
+146 verbose url resolving [ 'http://registry.npmjs.org/', './grunt-arialinter' ]
+147 verbose url resolved http://registry.npmjs.org/grunt-arialinter
+148 info trying registry request attempt 1 at 16:02:08
+149 http PUT http://registry.npmjs.org/grunt-arialinter
+150 http 409 http://registry.npmjs.org/grunt-arialinter
+151 verbose url raw grunt-arialinter
+152 verbose url resolving [ 'http://registry.npmjs.org/', './grunt-arialinter' ]
+153 verbose url resolved http://registry.npmjs.org/grunt-arialinter
+154 info trying registry request attempt 1 at 16:02:08
+155 http GET http://registry.npmjs.org/grunt-arialinter
+156 http 200 http://registry.npmjs.org/grunt-arialinter
+157 error publish fail Cannot publish over existing version.
+157 error publish fail Bump the 'version' field, set the --force flag, or
+157 error publish fail     npm unpublish 'grunt-arialinter@0.1.0'
+157 error publish fail and try again
+158 error System Darwin 11.4.2
+159 error command "node" "/usr/local/bin/npm" "publish"
+160 error cwd /Library/WebServer/Documents/arialinter
+161 error node -v v0.8.11
+162 error npm -v 1.1.62
+163 error code EPUBLISHCONFLICT
+164 verbose exit [ 1, true ]
