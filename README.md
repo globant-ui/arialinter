@@ -3,7 +3,25 @@ ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png
 ArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.
 
 
-##Usage
+##Node Usage
+
+Install the package from npm
+```javascript
+$ npm install arialinter --save-dev
+```
+
+Example
+```javascript
+linter.initialize(fileOrUrl, function() {
+  if (linter.evaluate()){
+    console.log('success');
+  } else {
+    console.log('failed');
+  }
+});
+```
+
+##CLI Usage
 
 Display all the rules
 ```javascript
