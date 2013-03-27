@@ -12,6 +12,9 @@ $ npm install arialinter --save-dev
 
 Example
 ```javascript
+var ArialLinter = require('arialinter');
+var linter = new ArialLinter();
+
 linter.initialize(fileOrUrl, function() {
   if (linter.evaluate()){
     console.log('success');
