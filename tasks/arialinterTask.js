@@ -42,45 +42,44 @@ module.exports = function(grunt) {
           x++;
 
           if (linter.evaluate(options)){
-            grunt.log.write('The HTML of the file ' + x + ' seems to be valid according the WCAG 2.0 spec.\n'.info);
+            grunt.log.write('File ' + x + ' markup seems to be valid.\n'.info);
             callback();
           } else {
-            grunt.log.write('The HTML of the file ' + x + ' doenst seem to be valid according the WCAG 2.0 spec.\n'.error);
+            grunt.log.write('File ' + x + ' markup doesnt seem to be valid.\n'.error);
             callback();
           }
         });
       }, function() {
-          done();
+        done();
       });
     };
 
 
     if ((this.options().templates) && (this.options().levels)) {
-        console.log('for templates and with level');
+      console.log('for templates and with level');
+      executeLinter(this.filesSrc, done, {
+        level: this.options().levels,
+        template: true
+      });
+    } else {
+      if (this.options().templates) {
+        console.log('only for templates');
         executeLinter(this.filesSrc, done, {
-          level: this.options().levels,
           template: true
         });
-      } else {
-        if (this.options().templates) {
-          console.log('only for templates');
+      }
+      else {
+        if (this.options().levels) {
+          console.log('only for level');
           executeLinter(this.filesSrc, done, {
-            template: true
+            level: this.options().levels
           });
         }
         else {
-          if (this.options().levels) {
-            console.log('only for level');
-            executeLinter(this.filesSrc, done, {
-              level: this.options().levels
-            });
-          }
-          else {
-            console.log('Applying default linter..');
-            executeLinter(this.filesSrc, done);
-          }
+          console.log('Applying default linter..');
+          executeLinter(this.filesSrc, done);
         }
+      }
     }
-
   });
 };
