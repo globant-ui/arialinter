@@ -5,6 +5,10 @@ ArialLinter goal is twofold:
 * provide a Grunt task based on the linter in order to integrate accesibility best practices 
 right into the developer workflow
 
+## Demo
+
+The demo is currently deployed in http://arialinter.rs.af.cm/.
+
 
 ## Getting Started
 
