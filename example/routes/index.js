@@ -14,7 +14,7 @@ exports.lint = function(req, res) {
       console.log('failed');
       req.flash('info', 'Linter failed');
     }
-    
+
     res.redirect('/');
   });
 };
