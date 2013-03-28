@@ -49,9 +49,9 @@ grunt.registerTask('default', ['arialinter']);
 ```
 
 Options:
-* templates: if templates is <pre>true</pre> then a subset of the rules will be run. This subset comprises those rules 
+* templates: if templates is **true** then a subset of the rules will be run. This subset comprises those rules 
 that can be checked against a static HTML template. Rules that require checking the correct event-handlers or any other 
-dynamic condition wont be run. By contrast, if templates is <pre>false</> then all rules will be run
+dynamic condition wont be run. By contrast, if templates is **false** then all rules will be run
 * levels: indicates which rules will be run according to the level they belong to. If you dont specify any level, it'' run for all the levels.
 
 ### Nodejs
