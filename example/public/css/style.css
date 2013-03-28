@@ -1,0 +1,194 @@
+/*! normalize.css v2.0.1 | MIT License | git.io/normalize */
+
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block;}audio,canvas,video{display:inline-block;}audio:not([controls]){display:none;height:0;}[hidden]{display:none;}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}a:focus{outline:thin dotted;}a:active,a:hover{outline:0;}h1{font-size:2em;}abbr[title]{border-bottom:1px dotted;}b,strong{font-weight:700;}dfn{font-style:italic;}mark{background:#ff0;color:#000;}code,kbd,pre,samp{font-family:monospace, serif;font-size:1em;}pre{white-space:pre-wrap;word-wrap:break-word;}q{quotes:\201C \201D \2018 \2019;}small{font-size:80%;}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline;}sup{top:-.5em;}sub{bottom:-.25em;}img{border:0;}svg:not(:root){overflow:hidden;}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em;}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;}button,input{line-height:normal;}button,html input[type=button],/* 1 */
+input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}button[disabled],input[disabled]{cursor:default;}input[type=checkbox],input[type=radio]{box-sizing:border-box;padding:0;}input[type=search]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box;}input[type=search]::-webkit-search-cancel-button,input[type=search]::-webkit-search-decoration{-webkit-appearance:none;}textarea{overflow:auto;vertical-align:top;}table{border-collapse:collapse;border-spacing:0;}body,figure{margin:0;}legend,button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0;}ul{padding:0;}
+
+
+/*General rules*/
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #1abc9c;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: #cff3ec;
+  text-decoration: none;
+}
+
+textarea{
+  border: 2px solid #dce4ec;
+  outline-color: #1abc9c;
+
+  width: 98%;
+  height: 200px;
+  resize: vertical;
+  color: #34495e;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  padding: 8px 0 9px 10px;
+  text-indent: 1px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background-color: #ffffff;
+
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+
+.btn {
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+
+  display: block;
+  border: none;
+  border-radius: 6px;
+
+  width: 100%;
+
+  text-decoration: none;
+  text-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+}
+
+.dk_toggle {
+  margin-top: 30px;
+  background-color: #1abc9c;
+  color: white;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 11px 45px 11px 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+  display: block;
+  position: relative;
+}
+
+.select-icon{
+  background: #1abc9c url("../images/toggle.png") no-repeat right center;
+  border-left: 2px solid rgba(52, 73, 94, 0.15);
+  border-radius: 0 6px 6px 0;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 42px;
+  -webkit-transition: 0.25s;
+  -moz-transition: 0.25s;
+  -o-transition: 0.25s;
+  transition: 0.25s;
+  -webkit-backface-visibility: hidden;
+}
+
+
+/*Section Soon*/
+
+.linter{
+  height: 100%;
+  width: 100%;
+}
+
+.linter .header{
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  font: 14px/1.231 "Lato", sans-serif;
+}
+
+.linter .header h1{
+  color: #eceef1;
+
+  font-size: 90px;
+  margin: 35px 0 35px 0;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 100px;
+}
+
+.linter .header p{
+  color: #105949;
+}
+
+/*Subscrite section*/
+
+.lint-form {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.lint-screen {
+  height: 100%;
+  position: relative;
+}
+
+.lint-content {
+  background-color: #eceff1;
+  border-radius: 6px;
+  width: 70%;
+  margin: 0 auto;
+  padding: 24px 23px 20px;
+  position: relative;
+}
+
+.lint-content:before {
+  content: "";
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+  border-color: transparent #eceff1 transparent transparent;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: -15px;
+  width: 0;
+  -webkit-transform: rotate(90deg);
+}
+
+.lint-content .control-group {
+  margin-bottom: 6px;
+  position: relative;
+}
+
+
+/* Footer section */
+
+footer{
+  color: #cff3ec;
+  background-color: #16A085;
+  text-align: center;
+  height: 60px;
+  width: 100%;
+}
+
+.footerList{
+  padding-top: 20px
+}
+
+.footerList li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 30px;
+}
