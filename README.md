@@ -1,6 +1,9 @@
 ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
 ============
-ArialLinter main goal is to provide a simple accesibility linter for HTML documents. Our long-term vision is to enforce accesibility best practices directly into the developer workflow.
+ArialLinter goal is twofold:
+* provide a simple accessibility linter for HTML documents,
+* provide a Grunt task based on the linter in order to integrate accesibility best practices 
+right into the developer workflow
 
 
 ## Getting Started
@@ -15,19 +18,20 @@ If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out th
 $ npm install grunt-arialinter --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+Once the plugin has been installed, it can be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
 grunt.loadNpmTasks('grunt-arialinter');
 ```
 
-And then you should add the task, you can lint files and url's:
+Afterwards, files, markup, and url's can be linted:
 
 ```js
 grunt.initConfig({
   arialinter: {
     files: [
       'https://www.google.com/',
+      './templates/*.html',
       '<!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> <div class="entry"> <p>{{title}}</p> <h2>By {{author.name}}</h2> <div class="body">{{body}}</div></div> </body> </html>'
     ],
     options: {
@@ -40,7 +44,11 @@ grunt.initConfig({
 grunt.registerTask('default', ['arialinter']);
 ```
 
-Note: If you dont specify a level, it will run for all the levels.
+Options:
+* templates: if templates is <pre>true</pre> then a subset of the rules will be run. This subset comprises those rules 
+that can be checked against a static HTML template. Rules that require checking the correct event-handlers or any other 
+dynamic condition wont be run. By contrast, if templates is <pre>false</> then all rules will be run
+* levels: indicates which rules will be run according to the level they belong to
 
 ### Nodejs
 
@@ -52,7 +60,7 @@ Install the package from npm
 $ npm install arialinter --save-dev
 ```
 
-And then you can consume the library:
+Then, using arialinter, is as easy as:
 
 ```javascript
 var ArialLinter = require('arialinter');
@@ -69,7 +77,7 @@ linter.initialize(fileOrUrl, function() {
 
 ### CLI
 
-You can also run AriaLinter from the terminal
+To run arialinter from the command line:
 
 ```shell
 $ npm install -g arialinter
