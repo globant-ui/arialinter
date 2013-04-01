@@ -22,25 +22,23 @@
       <div class="header">
         <h1>AriaLinter</h1>
       </div>
-      <div class="lint-form">
+      <div class="lint-results" style="display: none;">
+      </div>
+      <div class="lint-loading" style="display: none;">
+        <img src="/images/3601.gif" width="30" height="30" alt="Loading image." />
+      </div>
+      <div class="lint-form" >
           <div class="lint-screen">
-            <form action="/lint" method="POST">
-              <% if (message) { %>
-                <div class="message">
-                  <p><%= message %></p>
-                </div>
-              <% } %>
-              <div class="lint-content">
-                <div class="control-group">
-                  <textarea class="markupContent" name="htmlContent" placeholder="Your html markup goes here. You can also put urls (comma separated) and handlebars templates!"></textarea>
-                </div>
-
-                <div class="dk_toggle">
-                  <button class="btn btn-primary btn-large btn-block" type="submit">Lint !</button>
-                  <a href="#"><span class="select-icon"></span></a>
-                </div>
+            <div class="lint-content">
+              <div class="control-group">
+                <textarea class="markupContent" name="htmlContent" placeholder="Your html markup goes here. You can also put urls (comma separated) and handlebars templates!"></textarea>
               </div>
-            </form>
+
+              <div class="dk_toggle">
+                <button id="lint-execute" class="btn">Lint !</button>
+                <a href="#"><span class="select-icon"></span></a>
+              </div>
+            </div>
           </div>
       </div>
     </section>
@@ -56,5 +54,7 @@
       </ul>
     </footer>
 
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/main.js"></script>
   </body>
 </html>

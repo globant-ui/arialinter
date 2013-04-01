@@ -69,7 +69,7 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     case 'ielement':
       genericRule = new Rule(createElementRule({
@@ -79,7 +79,7 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     case 'fontelement':
       genericRule = new Rule(createElementRule({
@@ -89,7 +89,7 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     case 'blinkelement':
       genericRule = new Rule(createElementRule({
@@ -99,7 +99,7 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     case 'marqueeelement':
       genericRule = new Rule(createElementRule({
@@ -109,7 +109,7 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     case 'belement':
       genericRule = new Rule(createElementRule({
@@ -119,11 +119,11 @@ RuleFactory.prototype.makeRule = function(type) {
       }));
 
       this.rulesMap[type] = genericRule;
-    break;
+      break;
 
     default:
       this.rulesMap[type] = require('./rules/' + type);
-    break;
+      break;
     }
   }
 

@@ -20,7 +20,7 @@ ArialLinter.prototype = (function() {
     // uri can also be a string containing html
     initialize: function(uri, callback) {
       var that   = this;
-      this.dom   = undefined;
+      this.dom   = null;
       this.Reporter = Reporter;
       this.formatters = {};
 
@@ -29,6 +29,7 @@ ArialLinter.prototype = (function() {
 
       // Add formatters
       this.addFormatter(require('./formatters/text'));
+      this.addFormatter(require('./formatters/json'));
 
       jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
         if (!err) {
@@ -103,27 +104,31 @@ ArialLinter.prototype = (function() {
      * @method format
      */
     format: function(results, filename, formatId, options) {
-        var formatter = this.getFormatter(formatId),
-            result = null;
+      var formatter = this.getFormatter(formatId),
+        result = null;
 
-        if (formatter){
-            result = formatter.startFormat();
-            result += formatter.formatResults(results, filename, options || {});
-            result += formatter.endFormat();
-        }
+      if (formatter){
+        result = formatter.startFormat();
+        result += formatter.formatResults(results, filename, options || {});
+        result += formatter.endFormat();
+      }
 
-        return result;
+      return result;
     },
 
     getDom: function() {
       return this.dom;
     },
 
+    getReport: function(format) {
+      return this.format(this.Reporter.getMessages(), this.getDom(), format);
+    },
+
     evaluate: function(options) {
       var indexOfRules = this.rules.length;
       this.Reporter.initialize();
 
-      for (var x = 0; x < indexOfRules; x++){
+      for (var x = 0; x < indexOfRules; x++) {
         if (options) {
           if ((options.level) && (!options.template) && (options.level === this.rules[x].level)) {
             // Apply only for levels
@@ -133,7 +138,9 @@ ArialLinter.prototype = (function() {
               //apply only for templates
               this.rules[x].applyRule(this.getDom(), this.Reporter);
             } else {
-              if ((options.template) && (options.level) && (options.template === this.rules[x].template) && (options.level === this.rules[x].level)) {
+              if ((options.template) && (options.level) &&
+                  (options.template === this.rules[x].template) &&
+                  (options.level === this.rules[x].level)) {
                 // For templates with levels
                 this.rules[x].applyRule(this.getDom(), this.Reporter);
               }
@@ -148,10 +155,6 @@ ArialLinter.prototype = (function() {
       if (!this.Reporter.hasMessages()) {
         return true;
       } else {
-        var report = this.format(this.Reporter.getMessages(), this.getDom(), 'text');
-
-        console.log(report);
-
         return false;
       }
     }

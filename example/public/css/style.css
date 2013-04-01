@@ -68,6 +68,12 @@ textarea{
   -webkit-backface-visibility: hidden;
 }
 
+.btn-secondary{
+  margin-top: 35px;
+  color: #cff3ec;
+  background-color: #16A085;
+}
+
 .dk_toggle {
   margin-top: 30px;
   background-color: #1abc9c;
@@ -132,7 +138,39 @@ textarea{
   color: #105949;
 }
 
-/*Subscrite section*/
+
+.lint-loading{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 50px;
+  margin-top: 100px;
+  position: relative;
+  min-height: 100%;
+}
+
+.lint-results{
+  width: 100%;
+  text-align: left;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  position: relative;
+  min-height: 100%;
+}
+
+.results-container{
+  width: 70%;
+  margin: 0 auto;
+}
+
+.results-container ul{
+  padding-left: 35px;
+}
+
+.message-error{
+  color: red;
+}
+
+/*lint section*/
 
 .lint-form {
   width: 100%;
@@ -176,6 +214,8 @@ textarea{
 /* Footer section */
 
 footer{
+  position: absolute;
+  bottom: 0;
   color: #cff3ec;
   background-color: #16A085;
   text-align: center;
@@ -184,7 +224,7 @@ footer{
 }
 
 .footerList{
-  padding-top: 20px
+  padding-top: 10px
 }
 
 .footerList li{

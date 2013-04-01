@@ -9,13 +9,13 @@ exports.lint = function(req, res) {
   linter.initialize(req.body.htmlContent, function() {
     if (linter.evaluate()) {
       console.log('success');
-      req.flash('info', 'Linter executed successfully');
+      res.send('{ "errors": []}');
     } else {
       console.log('failed');
-      req.flash('info', 'Linter failed');
-    }
+      var errors = JSON.parse(linter.getReport('json'));
 
-    res.redirect('/');
+      res.send(errors);
+    }
   });
 };
 
