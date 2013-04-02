@@ -1,7 +1,7 @@
 [ArialLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
 ============
 ArialLinter goal is twofold:
-* provide a simple accessibility linter for HTML documents,
+* provide a simple accessibility linter for HTML documents
 * provide a Grunt task based on the linter in order to integrate accesibility best practices 
 right into the developer workflow
 
@@ -134,8 +134,6 @@ $ arialinter --level A --templates test/testFiles/index.html
  * http://dev.w3.org/html5/alt-techniques/
  * https://dvcs.w3.org/hg/aria-unofficial/raw-file/tip/index.html
  * http://www.openajax.org/member/wiki/Accessibility_-_WCAG20_Validation_Rules
-* NodeJS HTML Parser
- * [jsdom](https://github.com/tmpvar/jsdom)
 
 
 ##License
