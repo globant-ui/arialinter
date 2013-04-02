@@ -253,3 +253,27 @@ footer{
   display: inline-block;
   margin-right: 30px;
 }
+
+/* Mobile & Tablet screens */
+
+@media only screen and (max-width: 640px) {
+
+  .linter .header h1{
+    font-size: 85px;
+  }
+
+  .footerList li {
+    padding-bottom: 10px;
+    font-size: 18px;
+    display: block;
+  }
+
+  .footerList {
+    margin: 0;
+  }
+
+  footer{
+    height: 100%;
+  }
+
+}
