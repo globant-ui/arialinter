@@ -1,11 +1,5 @@
 $(document).ready(function(){
 
-  var displayLoading = function() {
-
-    //'<img src="/images/3601.gif" width="30" height="30" alt="Loading image." />'
-    $('.dk_toggle').hide();
-  };
-
   $('body').on('click', 'button#lint-reset', function(e){
     e.preventDefault();
 
