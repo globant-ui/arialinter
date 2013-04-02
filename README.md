@@ -1,4 +1,4 @@
-ArialLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
+[ArialLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
 ============
 ArialLinter goal is twofold:
 * provide a simple accessibility linter for HTML documents,
@@ -7,7 +7,7 @@ right into the developer workflow
 
 ## Demo
 
-The demo is currently deployed in http://arialinter.rs.af.cm/.
+The demo is currently deployed in http://arialinter.aws.af.cm/.
 
 
 ## Getting Started
