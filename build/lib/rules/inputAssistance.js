@@ -8,7 +8,7 @@ var Rule = require('../rule').Rule;
 
 var hasContent = function(element, dom, reporter, that) {
   dom.$(element).each(function(index, item){
-    if (!dom.$(this).val()) {
+    if (!dom.$(this).val() && !dom.$(this).text()) {
       reporter.error(that.message, 0, that.name);
 
       throw dom.$(item).parent().html();

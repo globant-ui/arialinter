@@ -21,28 +21,38 @@ var distinguishable = {
 
       var that = this;
 
-      var getInheritedColor = function(dom, that, property) {
-        dom.$(that).parents().each( function() {
-          var bc = dom.$(this).css('background-color');
-          if (bc === 'transparent') {
-            return getInheritedColor(dom, this, property);
-          } else {
-            return bc;
-          }
-        });
+      var getInheritedProperty = function(e, property) {
+        // Is current element's background color set?
+        var color = e.css(property);
+
+        if ((color !== 'rgba(0, 0, 0, 0)') && (color !== 'transparent')) {
+          // if so then return that color
+          return color;
+        }
+
+        // if not: are you at the body element?
+        if (e.is('body')) {
+          // return known 'false' value
+          return false;
+        } else {
+          // call getBackground with parent item
+          return getInheritedProperty(e.parent(), property);
+        }
       };
 
       dom.$('h1').each(function() {
-        var bg = new Color(dom.$(this).parent().css('background-color'));
-        var fg = new Color(dom.$(this).css('color'));
+        var bg = new Color(getInheritedProperty(dom.$(this), 'background-color'));
+        var fg = new Color(getInheritedProperty(dom.$(this), 'color'));
 
         var L1 = bg.luminosity();
         var L2 = fg.luminosity();
 
         var ratio = Math.round((Math.max(L1, L2) + 0.05)/(Math.min(L1, L2) + 0.05)*10)/10;
+        console.log('Ratio: ' + ratio);
+
 
         if (ratio <= 3) {
-          reporter.error(that.message, 0, that.name);
+          reporter.info(that.message, 0, that.name);
 
           throw dom.$(this).parent().html();
         }

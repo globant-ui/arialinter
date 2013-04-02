@@ -31,7 +31,11 @@ $(document).ready(function(){
 
         if (l > 0) {
           for (var x = 0; x < l; x++) {
-            list.append('<li><span class="message-error">' + e.errors[x].type + '</span>: ' + e.errors[x].rule + '. ' + e.errors[x].message + '.</li>');
+            if (e.errors[x].type === 'error') {
+              list.append('<li><span class="message-error">' + e.errors[x].type + '</span>: ' + e.errors[x].rule + '. ' + e.errors[x].message + '.</li>');
+            } else {
+              list.append('<li><span class="message-info">' + e.errors[x].type + '</span>: ' + e.errors[x].rule + '. ' + e.errors[x].message + '.</li>');
+            }
             console.log(e.errors[x].type + ': ' + e.errors[x].rule + '. ' + e.errors[x].message);
           }
         } else {

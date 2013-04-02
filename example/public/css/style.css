@@ -100,6 +100,7 @@ textarea{
 
 .select-icon{
   background: #1abc9c url("../images/toggle.png") no-repeat right center;
+  color: #1abc9c;
   border-left: 2px solid rgba(52, 73, 94, 0.15);
   border-radius: 0 6px 6px 0;
   height: 100%;
@@ -176,6 +177,9 @@ textarea{
 
 .message-error{
   color: red;
+}
+.message-info{
+  color: blue;
 }
 
 /*lint section*/
