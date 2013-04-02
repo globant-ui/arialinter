@@ -79,6 +79,21 @@ linter.initialize(fileOrUrl, function() {
 });
 ```
 
+You can also pass an options argument to the evaluate() method:
+
+```javascript
+var ArialLinter = require('arialinter');
+var linter = new ArialLinter();
+
+linter.initialize(fileOrUrl, function() {
+  if (linter.evaluate({level: 'A', template: true})){
+    console.log('success');
+  } else {
+    console.log('failed');
+  }
+});
+```
+
 ### CLI
 
 To run arialinter from the command line:
