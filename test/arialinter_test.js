@@ -34,7 +34,7 @@ exports['General Rules'] = {
 
 
     linter.initialize(uri, function(){
-      test.equal(linter.evaluate(), true, 'All the images should have the alt attr');
+      test.equal(linter.evaluate(), false, 'All the images should have the alt attr');
       test.done();
     });
   },
@@ -45,7 +45,7 @@ exports['General Rules'] = {
 
 
     linter.initialize(uri, function(){
-      test.equal(linter.evaluate(), true, 'Should fail because images doesnt have alt');
+      test.equal(linter.evaluate(), false, 'Should fail because images doesnt have alt');
       test.done();
     });
   },
