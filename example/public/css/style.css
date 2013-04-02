@@ -6,6 +6,11 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 
 /*General rules*/
 
+@font-face {
+  font-family: MavenPro;
+  src: url("../fonts/MavenPro/MavenProLight-100.otf") format("opentype");
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #1abc9c;
@@ -129,7 +134,8 @@ textarea{
 .linter .header h1{
   color: #eceef1;
 
-  font-size: 90px;
+  font-size: 100px;
+  font-family: MavenPro;
   margin: 35px 0 35px 0;
   font-weight: 900;
   letter-spacing: -2px;
