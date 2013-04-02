@@ -70,6 +70,7 @@ textarea{
 
 .btn-secondary{
   margin-top: 35px;
+  height: 62px;
   color: #cff3ec;
   background-color: #16A085;
 }
@@ -112,8 +113,9 @@ textarea{
 /*Section Soon*/
 
 .linter{
-  height: 100%;
   width: 100%;
+  min-height: 100%;
+  height: 100%;
 }
 
 .linter .header{
@@ -158,7 +160,7 @@ textarea{
 }
 
 .results-container{
-  width: 70%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -179,7 +181,6 @@ textarea{
 }
 
 .lint-screen {
-  height: 100%;
   position: relative;
 }
 
@@ -187,6 +188,7 @@ textarea{
   background-color: #eceff1;
   border-radius: 6px;
   width: 70%;
+  min-height: 310px;
   margin: 0 auto;
   padding: 24px 23px 20px;
   position: relative;
@@ -208,14 +210,23 @@ textarea{
 .lint-content .control-group {
   margin-bottom: 6px;
   position: relative;
+  text-align: center;
+}
+
+.control-group img {
+  margin-top: 15px;
+}
+
+.lint-reset{
+  margin-top: 140px;
 }
 
 
 /* Footer section */
 
 footer{
-  position: absolute;
-  bottom: 0;
+  position: relative;
+  margin: 0 auto;
   color: #cff3ec;
   background-color: #16A085;
   text-align: center;
@@ -224,7 +235,7 @@ footer{
 }
 
 .footerList{
-  padding-top: 10px
+  padding-top: 25px
 }
 
 .footerList li{

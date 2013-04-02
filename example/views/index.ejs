@@ -22,27 +22,33 @@
       <div class="header">
         <h1>AriaLinter</h1>
       </div>
-      <div class="lint-results" style="display: none;">
-      </div>
-      <div class="lint-loading" style="display: none;">
-        <img src="/images/3601.gif" width="30" height="30" alt="Loading image." />
-      </div>
       <div class="lint-form" >
           <div class="lint-screen">
             <div class="lint-content">
               <div class="control-group">
-                <textarea class="markupContent" name="htmlContent" placeholder="Your html markup goes here. You can also put urls (comma separated) and handlebars templates!"></textarea>
+                <div class="lint-textarea">
+                  <textarea class="markupContent" name="htmlContent" placeholder="Your html markup goes here. You can also put urls (comma separated) and handlebars templates!"></textarea>
+                </div>
+                <div class="lint-loading" style="display: none;">
+                  <img src="/images/3601.gif" width="30" height="30" alt="Loading image." />
+                </div>
+                <div class="lint-results" style="display: none;">
+
+                </div>
               </div>
 
-              <div class="dk_toggle">
+              <div class="dk_toggle toogle-buttons">
                 <button id="lint-execute" class="btn">Lint !</button>
                 <a href="#"><span class="select-icon"></span></a>
+              </div>
+              <div class="lint-reset" style="display: none;">
+                <button id="lint-reset" class="btn btn-secondary">Reset</button>
               </div>
             </div>
           </div>
       </div>
     </section>
-
+    <div class="clearfooter"></div>
     <footer>
       <ul class="footerList">
         <li><a href="https://github.com/globant-ui/arialinter/wiki/About">About</a></li>
