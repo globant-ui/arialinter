@@ -31,7 +31,7 @@ $(document).ready(function(){
 
         if (l > 0) {
           for (var x = 0; x < l; x++) {
-            if (e.errors[x].type === 'error') {
+            if (e.errors[x].type === 'Error') {
               list.append('<li><span class="message-error">' + e.errors[x].type + '</span>: ' + e.errors[x].rule + '. ' + e.errors[x].message + '.</li>');
             } else {
               list.append('<li><span class="message-info">' + e.errors[x].type + '</span>: ' + e.errors[x].rule + '. ' + e.errors[x].message + '.</li>');
@@ -55,6 +55,16 @@ $(document).ready(function(){
         console.log('error');
         console.log(textStatus);
         console.log(errorThrown);
+
+        var p = $(".lint-results").append('<div class="results-container"><p></p></div>').find('p');
+        p.append('Error: ' + textStatus + '. ErrorThrown: ' + errorThrown);
+
+        $('.lint-loading').hide();
+
+        $('.lint-results').fadeIn('fast', function() {
+          $('.lint-results').show();
+          $('.lint-reset').show();
+        });
       }
     });
   });
