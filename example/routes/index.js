@@ -1,5 +1,5 @@
-var ArialLinter = require('arialinter');
-var linter = new ArialLinter();
+var AriaLinter = require('arialinter');
+var linter = new AriaLinter();
 
 exports.index = function(req, res) {
   res.render('index', { message: req.flash('info') });
