@@ -7,7 +7,7 @@
  */
 
 
-var ArialLinter = require('../lib/arialinter.js').ArialLinter;
+var AriaLinter = require('../lib/arialinter.js').AriaLinter;
 var async = require('async');
 var colors = require('colors');
 
@@ -28,12 +28,12 @@ colors.setTheme({
 module.exports = function(grunt) {
   'use strict';
 
-  grunt.registerMultiTask('arialinter', 'ArialLinter provides a simple accesibility linter for HTML documents.', function() {
+  grunt.registerMultiTask('arialinter', 'AriaLinter provides a simple accesibility linter for HTML documents.', function() {
 
     // Tell grunt this task is asynchronous.
     var done = this.async();
 
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var x = 0;
 
     var executeLinter = function(files, done, options) {

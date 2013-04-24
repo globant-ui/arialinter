@@ -1,8 +1,8 @@
-[ArialLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
+[AriaLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter)
 ============
-ArialLinter goal is twofold:
+AriaLinter goal is twofold:
 * provide a simple accessibility linter for HTML documents
-* provide a Grunt task based on the linter in order to integrate accesibility best practices 
+* provide a Grunt task based on the linter in order to integrate accesibility best practices
 right into the developer workflow
 
 ## Demo
@@ -49,8 +49,8 @@ grunt.registerTask('default', ['arialinter']);
 ```
 
 Options:
-* templates: if templates is **true** then a subset of the rules will be run. This subset comprises those rules 
-that can be checked against a static HTML template. Rules that require checking the correct event-handlers or any other 
+* templates: if templates is **true** then a subset of the rules will be run. This subset comprises those rules
+that can be checked against a static HTML template. Rules that require checking the correct event-handlers or any other
 dynamic condition wont be run. By contrast, if templates is **false** then all rules will be run
 * levels: indicates which rules will be run according to the level they belong to. If you dont specify any level, it'' run for all the levels.
 
@@ -67,8 +67,8 @@ $ npm install arialinter --save-dev
 Then, using arialinter, is as easy as:
 
 ```javascript
-var ArialLinter = require('arialinter');
-var linter = new ArialLinter();
+var AriaLinter = require('arialinter');
+var linter = new AriaLinter();
 
 linter.initialize(fileOrUrl, function() {
   if (linter.evaluate()){
@@ -82,8 +82,8 @@ linter.initialize(fileOrUrl, function() {
 You can also pass an options argument to the evaluate() method:
 
 ```javascript
-var ArialLinter = require('arialinter');
-var linter = new ArialLinter();
+var AriaLinter = require('arialinter');
+var linter = new AriaLinter();
 
 linter.initialize(fileOrUrl, function() {
   if (linter.evaluate({level: 'A', template: true})){

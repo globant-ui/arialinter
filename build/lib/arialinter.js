@@ -11,9 +11,9 @@ var RuleFactory = require('./rulefactory');
 var Reporter = require('./reporter');
 
 
-var ArialLinter = function() {};
+var AriaLinter = function() {};
 
-ArialLinter.prototype = (function() {
+AriaLinter.prototype = (function() {
   'use strict';
 
   return {
@@ -162,4 +162,4 @@ ArialLinter.prototype = (function() {
 })();
 
 
-exports.ArialLinter = ArialLinter;
+exports.AriaLinter = AriaLinter;

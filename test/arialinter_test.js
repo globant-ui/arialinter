@@ -1,6 +1,6 @@
 'use strict';
 
-var ArialLinter = require('../lib/arialinter.js').ArialLinter;
+var AriaLinter = require('../lib/arialinter.js').AriaLinter;
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -29,7 +29,7 @@ exports['General Rules'] = {
   },
 
   'HaveAltAttr': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html lang="en"><head><title>test mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
@@ -40,7 +40,7 @@ exports['General Rules'] = {
   },
 
   'DoesntHaveAltAttr': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html lang="en"><head><title>test1 mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="ads"/><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
 
 
@@ -51,7 +51,7 @@ exports['General Rules'] = {
   },
 
   'HaveIElement': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
 
 
@@ -62,7 +62,7 @@ exports['General Rules'] = {
   },
 
   'DoesntHaveLangAttr': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
 
 
@@ -73,7 +73,7 @@ exports['General Rules'] = {
   },
 
   'HaveBElement': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <b>asdf</b> </body> </html>';
 
 
@@ -84,7 +84,7 @@ exports['General Rules'] = {
   },
 
   'HaveUElement': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>';
 
 
@@ -95,7 +95,7 @@ exports['General Rules'] = {
   },
 
   'HaveMarqueeBlinkElement': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>';
 
 
@@ -106,7 +106,7 @@ exports['General Rules'] = {
   },
 
   'tableHasSummary': function(test) {
-    var linter = new ArialLinter();
+    var linter = new AriaLinter();
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><table></table></body> </html>';
 
 

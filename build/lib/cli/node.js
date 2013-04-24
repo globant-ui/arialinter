@@ -1,7 +1,7 @@
-var ArialLinter = require('../arialinter.js').ArialLinter;
+var AriaLinter = require('../arialinter.js').AriaLinter;
 var async = require('async');
 var program = require('commander');
-var linter = new ArialLinter();
+var linter = new AriaLinter();
 var colors = require('colors');
 
 var executeLinter = function(files, options) {
