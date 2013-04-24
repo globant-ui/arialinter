@@ -1,1 +1,1 @@
-module.exports = require('./lib/arialinter.js').ArialLinter;
+module.exports = require('./lib/arialinter.js').AriaLinter;

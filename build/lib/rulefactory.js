@@ -2,7 +2,7 @@ var Rule = require('./rule').Rule;
 
 /**
  * RuleFactory object.
- * Decouples rule creation from ArialLinter
+ * Decouples rule creation from AriaLinter
  */
 
 /**
