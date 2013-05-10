@@ -36,10 +36,10 @@ var pageTitled = {
     }
   }),
 
-  onlyOneH1: new Rule({
+  maximumTwoH1: new Rule({
     name:    'No more than two h1 elements',
 
-    message: 'A document can only contain one H1 element',
+    message: 'A document can contain no more than two H1 elements',
 
     ruleUrl: 'http://oaa-accessibility.org/rule/17/',
 
@@ -57,7 +57,7 @@ var pageTitled = {
         e.push(this);
       });
 
-      if (e.length > 1) {
+      if (e.length > 2) {
         reporter.error(that.message, 0, that.name);
         throw dom.$(this).parent().html();
       }
