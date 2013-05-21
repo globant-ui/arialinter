@@ -126,6 +126,10 @@ Execute the linter using all the rules of the level A and the rules that just ap
 $ arialinter --level A --templates test/testFiles/index.html
 ```
 
+##Related projects:
+* [A11YLint](https://github.com/DuaneOBrien/A11YLint-Brackets). A11YLint is an extension for the Brackets IDE which 
+aims to bring the same kind of in-context, immediate feedback that you get from JSLint/JSHint and other linting tools, 
+but regarding issues in your HTML that would affect how accessible your content is. 
 
 ##Resources:
 * Accessibility
@@ -134,7 +138,6 @@ $ arialinter --level A --templates test/testFiles/index.html
  * http://dev.w3.org/html5/alt-techniques/
  * https://dvcs.w3.org/hg/aria-unofficial/raw-file/tip/index.html
  * http://www.openajax.org/member/wiki/Accessibility_-_WCAG20_Validation_Rules
-
 
 ##License
 
