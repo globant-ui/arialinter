@@ -42,10 +42,11 @@ module.exports = function(grunt) {
           x++;
 
           if (linter.evaluate(options)){
-            grunt.log.write('File ' + x + ' markup seems to be valid.\n'.info);
+            console.log(('No accessibility errors found for file ' + uri + '.\n').blue);
             callback();
           } else {
-            grunt.log.write('File ' + x + ' markup doesnt seem to be valid.\n'.error);
+            console.log((linter.getErrorsFound() + ' error/s were found in file ' + uri + '.\n').red);
+            console.log(linter.getReport('text'));
             callback();
           }
         });
@@ -56,27 +57,27 @@ module.exports = function(grunt) {
 
 
     if ((this.options().templates) && (this.options().levels)) {
-      console.log('for templates and with level');
+      //console.log('for templates and with level');
       executeLinter(this.filesSrc, done, {
         level: this.options().levels,
         template: true
       });
     } else {
       if (this.options().templates) {
-        console.log('only for templates');
+        //console.log('only for templates');
         executeLinter(this.filesSrc, done, {
           template: true
         });
       }
       else {
         if (this.options().levels) {
-          console.log('only for level');
+          //console.log('only for level');
           executeLinter(this.filesSrc, done, {
             level: this.options().levels
           });
         }
         else {
-          console.log('Applying default linter..');
+          //console.log('Applying default linter..');
           executeLinter(this.filesSrc, done);
         }
       }
