@@ -34,7 +34,8 @@ module.exports = function(grunt) {
     var done = this.async();
 
     var linter = new AriaLinter();
-    var x = 0;
+    var x = 0,
+        hasErrors;
 
     var executeLinter = function(files, done, options) {
       async.each(files, function(uri, callback) {
@@ -45,13 +46,16 @@ module.exports = function(grunt) {
             console.log(('No accessibility errors found for file ' + uri + '.\n').blue);
             callback();
           } else {
+            hasErrors = true;
+            
             console.log((linter.getErrorsFound() + ' error/s were found in file ' + uri + '.\n').red);
             console.log(linter.getReport('text'));
             callback();
           }
         });
       }, function() {
-        done();
+        // Task should fail if it has any errors.
+        done(!hasErrors);
       });
     };
 
