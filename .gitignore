@@ -11,7 +11,7 @@ Session.vim
 
 
 # -- NodeJS files ----------------------------
-
+/build/
 /node_modules/
 /build/node_modules/
 /example/node_modules/
