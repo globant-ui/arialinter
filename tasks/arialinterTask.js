@@ -32,10 +32,9 @@ module.exports = function(grunt) {
 
     // Tell grunt this task is asynchronous.
     var done = this.async();
-
     var linter = new AriaLinter();
-    var x = 0,
-        hasErrors;
+    var x = 0;
+    var hasErrors = false;
 
     var executeLinter = function(files, done, options) {
       async.each(files, function(uri, callback) {
@@ -43,13 +42,10 @@ module.exports = function(grunt) {
           x++;
 
           if (linter.evaluate(options)){
-            console.log(('No accessibility errors found for file ' + uri + '.\n').blue);
             callback();
           } else {
             hasErrors = true;
-            
-            console.log((linter.getErrorsFound() + ' error/s were found in file ' + uri + '.\n').red);
-            console.log(linter.getReport('text'));
+            console.log(linter.getReport('text', uri));
             callback();
           }
         });
