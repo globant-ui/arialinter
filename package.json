@@ -23,6 +23,9 @@
   "scripts": {
     "test": "grunt test"
   },
+  "bin": {
+    "arialinter": "./lib/cli/node.js"
+  },
   "devDependencies": {
     "grunt-contrib-jshint": "~0.1.1",
     "grunt-contrib-nodeunit": "~0.1.2",
