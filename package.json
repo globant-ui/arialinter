@@ -38,7 +38,8 @@
     "async": "*",
     "commander": "*",
     "color": "*",
-    "colors": "*"
+    "colors": "*",
+    "lodash": "2.4.1"
   },
   "keywords": []
 }
