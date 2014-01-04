@@ -8,9 +8,13 @@ module.exports = function(grunt) {
       files: ['test/**/*_test.js']
     },
     arialinter: {
-      files: ['test/testFiles/**.html', 'test/**/**.hbs'],
+      files: ['test/testFiles/*.html', 'test/**/**.hbs'],
       options: {
-        templates: true
+        level: 'A',
+        rules: {
+          contrastMinimum: false,
+          doNotUseElementBlink: true
+        }
       }
     },
     copy: {
