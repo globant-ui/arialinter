@@ -1,4 +1,4 @@
-[AriaLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter) ![Dependencies](https://david-dm.org/globant-ui/arialinter.png)
+[AriaLinter](http://arialinter.aws.af.cm/) [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter) ![Dependencies](https://david-dm.org/globant-ui/arialinter.png)[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/globant-ui/arialinter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 ============
 AriaLinter goal is twofold:
 * provide a simple accessibility linter for HTML documents
@@ -144,7 +144,3 @@ but regarding issues in your HTML that would affect how accessible your content 
 Copyright (c) 2013 Globant UI Developers
 
 Licensed under the MIT license.
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/globant-ui/arialinter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
