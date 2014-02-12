@@ -144,3 +144,7 @@ but regarding issues in your HTML that would affect how accessible your content 
 Copyright (c) 2013 Globant UI Developers
 
 Licensed under the MIT license.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/globant-ui/arialinter/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
