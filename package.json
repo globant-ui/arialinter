@@ -41,5 +41,8 @@
     "colors": "*",
     "lodash": "2.4.1"
   },
-  "keywords": []
+  "peerDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": ["gruntplugin"]
 }
