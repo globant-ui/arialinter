@@ -4,19 +4,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: '<json:package.json>',
+
     nodeunit: {
       files: ['test/**/*_test.js']
     },
+
     arialinter: {
       files: ['test/testFiles/*.html', 'test/**/**.hbs'],
       options: {
         level: 'A',
+        templates: true,
         rules: {
           contrastMinimum: false,
           doNotUseElementBlink: true
         }
       }
     },
+
     copy: {
       main: {
         files: [

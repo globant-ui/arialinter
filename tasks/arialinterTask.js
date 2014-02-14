@@ -6,60 +6,59 @@
  * Licensed under the MIT license.
  */
 
-
-var AriaLinter = require('../lib/arialinter.js').AriaLinter;
-var async = require('async');
-var colors = require('colors');
-
-colors.setTheme({
-  silly: 'rainbow',
-  input: 'grey',
-  verbose: 'cyan',
-  prompt: 'grey',
-  info: 'green',
-  data: 'grey',
-  help: 'cyan',
-  warn: 'yellow',
-  debug: 'blue',
-  error: 'red'
-});
-
-
-module.exports = function(grunt) {
+(function() {
   'use strict';
 
-  grunt.registerMultiTask('arialinter', 'AriaLinter provides a simple accesibility linter for HTML documents.', function() {
+  var AriaLinter = require('../lib/arialinter.js');
+  var async = require('async');
+  var colors = require('colors');
 
-    // Tell grunt this task is asynchronous.
-    var done = this.async();
-    var linter = new AriaLinter();
-    var x = 0;
-    var hasErrors = false;
+  module.exports = function(grunt) {
 
-    var executeLinter = function(files, done, options) {
-      async.each(files, function(uri, callback) {
-        linter.initialize(uri, function() {
-          x++;
-          if (linter.evaluate(options)) {
-            callback();
-          } else {
-            hasErrors = true;
-            console.log(linter.getReport('text', uri));
-            callback();
-          }
+    var taskDescription = 'AriaLinter provides a simple accesibility';
+    taskDescription += ' linter for HTML documents.';
+
+    colors.setTheme({
+      silly: 'rainbow',
+      input: 'grey',
+      verbose: 'cyan',
+      prompt: 'grey',
+      info: 'green',
+      data: 'grey',
+      help: 'cyan',
+      warn: 'yellow',
+      debug: 'blue',
+      error: 'red'
+    });
+
+    grunt.registerMultiTask('arialinter', taskDescription, function() {
+      var done = this.async();
+      var hasErrors = false;
+
+      var executeLinter = function(files, done, options) {
+        async.each(files, function(uri, callback) {
+          AriaLinter.initialize(uri, function() {
+            if (AriaLinter.evaluate(options)) {
+              callback();
+            } else {
+              hasErrors = true;
+              console.log(AriaLinter.getReport('text', uri));
+              callback();
+            }
+          });
+        }, function() {
+          done(!hasErrors);
         });
-      }, function() {
-        done(!hasErrors);
-      });
-    };
+      };
 
-    var config = this.options();
+      var config = this.options();
 
-    if (config.templates === true) {
-      config.template = true;
-      delete config.templates;
-    }
+      if (config.templates === true) {
+        config.template = true;
+        delete config.templates;
+      }
 
-    executeLinter(this.filesSrc, done, config);
-  });
-};
+      executeLinter(this.filesSrc, done, config);
+    });
+  };
+}());
