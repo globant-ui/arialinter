@@ -6,7 +6,7 @@ module.exports = function(grunt) {
     pkg: '<json:package.json>',
 
     nodeunit: {
-      files: ['test/**/*_test.js']
+      files: ['test/**/*.test.js']
     },
 
     arialinter: {
