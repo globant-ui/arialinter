@@ -33,13 +33,11 @@
 
     grunt.registerMultiTask('arialinter', taskDescription, function() {
       var done = this.async();
-      var x = 0;
       var hasErrors = false;
 
       var executeLinter = function(files, done, options) {
         async.each(files, function(uri, callback) {
           AriaLinter.initialize(uri, function() {
-            x++;
             if (AriaLinter.evaluate(options)) {
               callback();
             } else {
