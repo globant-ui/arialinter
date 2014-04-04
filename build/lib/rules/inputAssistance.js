@@ -4,231 +4,202 @@
 // Rule 53: Effective labels should be unique. Last updated: 2011-03-31
 // Rule 56: Title attributes used for labeling form controls must have content. Last updated: 2011-03-31
 
-var Rule = require('../rule').Rule;
+(function() {
+  'use strict';
+  var Rule = require('../rule');
 
-var hasContent = function(element, dom, reporter, that) {
-  dom.$(element).each(function(index, item){
-    if (!dom.$(this).val() && !dom.$(this).text()) {
-      reporter.error(that.message, 0, that.name);
+  var hasContent = function(element, dom) {
+    dom.$(element).each(function(index, item){
+      if (!dom.$(this).val() && !dom.$(this).text()) {
+        throw new Error({
+          reportType: 'error',
+          el: dom.$(item).parent().html()
+        });
+      }
+    });
+  };
 
-      throw dom.$(item).parent().html();
-    }
-  });
-};
+  module.exports = {
 
-var inputAssistance = {
-  fieldsetHasLegend: new Rule({
-    name:    'Each fieldset element should contain a legend element',
+    fieldsetHasLegend: new Rule({
+      name:    'Each fieldset element should contain a legend element',
 
-    message: 'Please add a legend element inside of the fieldset tag',
+      message: 'Please add a legend element inside of the fieldset tag',
 
-    ruleUrl: '',
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/73/',
 
-    level: 'A',
+      level: 'A',
 
-    template: true,
+      template: true,
 
-    callback: function(dom, reporter) {
-      'use strict';
-
-      var that = this;
-
-      dom.$('fieldset').each(function(index, item){
-
-        if (!dom.$(this).find('legend')) {
-          reporter.error(that.message, 0, that.name);
-
-          throw dom.$(item).parent().html();
-        }
-      });
-    }
-  }),
-
-  labelWithoutElements: new Rule({
-    name:    'The label element should not encapsulate select and textarea elements',
-
-    message: 'Please remove the select or textarea elements from the label',
-
-    ruleUrl: '',
-
-    level: 'A',
-
-    template: true,
-
-    callback: function(dom, reporter) {
-      'use strict';
-
-      var that = this;
-
-      dom.$('label').each(function(index, item){
-
-        if (!dom.$(this).find('textarea')) {
-          reporter.error(that.message, 0, that.name);
-
-          throw dom.$(item).parent().html();
-        } else {
-          if (!dom.$(this).find('select')) {
-            reporter.error(that.message, 0, that.name);
-
-            throw dom.$(item).parent().html();
-          }
-        }
-      });
-    }
-  }),
-
-  inputImageHasAlt: new Rule({
-    name:    'Input element of type=[image] must have an alt or a title attribute',
-
-    message: 'Please add an alt or title attribute to the input',
-
-    ruleUrl: '',
-
-    level: 'A',
-
-    template: true,
-
-    callback: function(dom, reporter) {
-      'use strict';
-
-      var that = this;
-
-      dom.$('input[type=image]').each(function(index, item){
-        if (!dom.$(this).attr('alt') && !dom.$(this).attr('title')) {
-          reporter.error(that.message, 0, that.name);
-
-          throw dom.$(item).parent().html();
-        }
-      });
-    }
-  }),
-
-  inputsHasValue: new Rule({
-    name:    'Input elements where type=[button|submit|reset] must have a value or title attribute',
-
-    message: 'All the inputs must have a valid value or title attribute',
-
-    ruleUrl: '',
-
-    level: 'AA',
-
-    template: true,
-
-    callback: function(dom, reporter) {
-      'use strict';
-
-      var that = this;
-
-      var inputHasValue = function(element, dom, reporter, that) {
-        dom.$(element).each(function(index, item){
-          if (!dom.$(this).val() && !dom.$(this).attr('title')) {
-            reporter.error(that.message, 0, that.name);
-
-            throw dom.$(item).parent().html();
+      callback: function(dom, reporter) {
+        dom.$('fieldset').each(function(index, item){
+          if (!dom.$(this).find('legend')) {
+            throw {
+              reportType: 'error',
+              el: dom.$(item).parent().html()
+            };
           }
         });
-      };
+      }
+    }),
 
-      inputHasValue('input[type=button]', dom, reporter, that);
-      inputHasValue('input[type=submit]', dom, reporter, that);
-      inputHasValue('input[type=reset]',  dom, reporter, that);
-    }
-  }),
+    labelWithoutElements: new Rule({
+      name:    'The label element should not encapsulate select and textarea elements',
 
-  buttonsHasContent: new Rule({
-    name:    'Each button element must contain content',
+      message: 'Please remove the select or textarea elements from the label',
 
-    message: 'Please ensure that all the buttons has content inside',
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/74/',
 
-    ruleUrl: '',
+      level: 'A',
 
-    level: 'A',
+      template: true,
 
-    template: true,
+      callback: function(dom, reporter) {
+        dom.$('label').each(function(index, item) {
+          if (!dom.$(this).find('textarea')) {
+            throw {
+              reportType: 'error',
+              el: dom.$(item).parent().html()
+            };
+          } else {
+            if (!dom.$(this).find('select')) {
+              throw {
+                reportType: 'error',
+                el: dom.$(item).parent().html()
+              };
+            }
+          }
+        });
+      }
+    }),
 
-    callback: function(dom, reporter) {
-      'use strict';
+    inputImageHasAlt: new Rule({
+      name:    'Input element of type=[image] must have an alt or a title attribute',
 
-      var that = this;
+      message: 'Please add an alt or title attribute to the input',
 
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/76/',
 
-      hasContent(':button', dom, reporter, that);
-    }
-  }),
+      level: 'A',
 
-  labelTextContent: new Rule({
-    name:    'Labels must have text content',
+      template: true,
 
-    message: 'All labels must have text content',
+      callback: function(dom, reporter) {
+        dom.$('input[type=image]').each(function(index, item){
+          if (!dom.$(this).attr('alt') && !dom.$(this).attr('title')) {
+            throw {
+              reportType: 'error',
+              el: dom.$(item).parent().html()
+            };
+          }
+        });
+      }
+    }),
 
-    ruleUrl: '',
+    inputsHasValue: new Rule({
+      name:    'Input elements where type=[button|submit|reset] must have a value or title attribute',
 
-    level: 'A',
+      message: 'All the inputs must have a valid value or title attribute',
 
-    template: true,
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/77/',
 
-    callback: function(dom, reporter) {
-      'use strict';
+      level: 'AA',
 
-      var that = this;
+      template: true,
 
+      callback: function(dom, reporter) {
+        var inputHasValue = function(element, dom) {
+          dom.$(element).each(function(index, item){
+            if (!dom.$(this).val() && !dom.$(this).attr('title')) {
+              throw {
+                reportType: 'error',
+                el: dom.$(item).parent().html()
+              };
+            }
+          });
+        };
 
-      hasContent('label', dom, reporter, that);
-    }
-  }),
+        inputHasValue('input[type=button]', dom);
+        inputHasValue('input[type=submit]', dom);
+        inputHasValue('input[type=reset]',  dom);
+      }
+    }),
 
-  legendTextContent: new Rule({
-    name:    'Legends must have text content',
+    buttonsHasContent: new Rule({
+      name:    'Each button element must contain content',
 
-    message: 'All legends must have text content',
+      message: 'Please ensure that all the buttons has content inside',
 
-    ruleUrl: '',
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/78/',
 
-    level: 'A',
+      level: 'A',
 
-    template: true,
+      template: true,
 
-    callback: function(dom, reporter) {
-      'use strict';
+      callback: function(dom, reporter) {
+        hasContent(':button', dom);
+      }
+    }),
 
-      var that = this;
+    labelTextContent: new Rule({
+      name:    'Labels must have text content',
 
+      message: 'All labels must have text content',
 
-      hasContent('legend', dom, reporter, that);
-    }
-  }),
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/80/',
 
-  formUniqueId: new Rule({
-    name:    'Form controls must have unique ids',
+      level: 'A',
 
-    message: 'All forms must have unique ids',
+      template: true,
 
-    ruleUrl: '',
+      callback: function(dom, reporter) {
+        hasContent('label', dom);
+      }
+    }),
 
-    level: 'A',
+    legendTextContent: new Rule({
+      name:    'Legends must have text content',
 
-    template: true,
+      message: 'All legends must have text content',
 
-    callback: function(dom, reporter) {
-      'use strict';
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/81/',
 
-      var that = this;
-      var s = [];
+      level: 'A',
 
+      template: true,
 
-      dom.$('form').each(function(index, item){
-        var e = dom.$(this).attr('id');
+      callback: function(dom, reporter) {
+        hasContent('legend', dom);
+      }
+    }),
 
-        if (s.indexOf(e) > -1) {
-          s.push(e);
-        } else {
-          reporter.error(that.message, 0, that.name);
-          throw dom.$(item).parent().html();
-        }
-      });
+    formUniqueId: new Rule({
+      name:    'Form controls must have unique ids',
 
-    }
-  })
-};
+      message: 'All form controls must have unique ids',
 
-module.exports = inputAssistance;
+      ruleUrl: 'http://oaa-accessibility.org/wcag20/rule/83/',
+
+      level: 'A',
+
+      template: true,
+
+      callback: function(dom, reporter) {
+        var s = [];
+
+        dom.$('form button, form input, form textarea, form select').each(function(index, item){
+          var e = dom.$(this).attr('id');
+          if (s.indexOf(e) === -1) {
+            s.push(e);
+          } else {
+            throw {
+              reportType: 'error',
+              el: dom.$(item).parent().html()
+            };
+          }
+        });
+      }
+    })
+  };
+}());

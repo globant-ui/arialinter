@@ -1,7 +1,7 @@
 {
   "name": "grunt-arialinter",
   "description": "AriaLinter provides a simple accesibility linter for HTML documents.",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "homepage": "https://github.com/globant-ui/arialinter",
   "repository": {
     "type": "git",

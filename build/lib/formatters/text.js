@@ -1,7 +1,10 @@
-var colors = require('colors');
+(function() {
+  'use strict';
 
-var textFormatter = {
-    //format information
+  var colors = require('colors');
+
+  module.exports  = {
+
     id: 'text',
 
     /**
@@ -9,7 +12,7 @@ var textFormatter = {
      * @return {String} to prepend before all results
      */
     startFormat: function() {
-        return '';
+      return '';
     },
 
     /**
@@ -17,16 +20,9 @@ var textFormatter = {
      * @return {String} to append after all results
      */
     endFormat: function() {
-        return '';
+      return '';
     },
 
-    /**
-     * Given CSS Lint results for a file, return output for this format.
-     * @param results {Object} with error and warning messages
-     * @param filename {String} relative file path
-     * @param options {Object} (Optional) specifies special handling of output
-     * @return {String} output for results
-     */
     formatResults: function(messages, filename, options) {
       var output = '';
 
@@ -45,13 +41,19 @@ var textFormatter = {
 
       var len = messages.length;
 
-      output += '\n\nFile: ' + filename.$('html').html() + '\n';
+      output += ('* File: '.bold + filename + ' has ' + len + ' error/s.\n').red;
       for (var x = 0; x < len; x++) {
-        output += capitalize(messages[x].type).red + ': ' + capitalize(messages[x].rule) + '\n' + capitalize(messages[x].message) + '\n';
+        output += messages[x].element + '\n';
+        output += capitalize(messages[x].type).red + ': ';
+        output += capitalize(messages[x].rule.name) + '\n';
+        output += 'Description: '.red + capitalize(messages[x].rule.message) + '\n';
+        output += 'Rule URL: '.red +  messages[x].rule.ruleUrl  + '\n';
+        if (x < len) {
+          output += '\n';
+        }
       }
 
       return output;
     }
-};
-
-module.exports = textFormatter;
+  };
+}());

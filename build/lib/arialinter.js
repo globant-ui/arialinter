@@ -6,21 +6,19 @@
  * Licensed under the MIT license.
  */
 
-var jsdom = require('jsdom');
-var RuleFactory = require('./rulefactory');
-var Reporter = require('./reporter');
-
-
-var AriaLinter = function() {};
-
-AriaLinter.prototype = (function() {
+(function() {
   'use strict';
 
-  return {
-    // uri can also be a string containing html
+  var _ = require('lodash');
+  var jsdom = require('jsdom');
+  var RuleRegistry = require('./ruleregistry');
+  var Reporter = require('./reporter');
+
+  var AriaLinter = {
+
     initialize: function(uri, callback) {
-      var that   = this;
-      this.dom   = null;
+      var that = this;
+      this.dom = null;
       this.Reporter = Reporter;
       this.formatters = {};
 
@@ -45,34 +43,18 @@ AriaLinter.prototype = (function() {
     initRules: function() {
       this.rules = [];
 
-      var getRulesFromGuideline = function(rules) {
-        var r = [];
+      RuleRegistry.loadRules('adaptable');
+      RuleRegistry.loadRules('distinguishable');
+      RuleRegistry.loadRules('headingsAndLabels');
+      RuleRegistry.loadRules('inputAssistance');
+      RuleRegistry.loadRules('linkPurpose');
+      RuleRegistry.loadRules('navigable');
+      RuleRegistry.loadRules('pageTitled');
+      RuleRegistry.loadRules('readable');
+      RuleRegistry.loadRules('textAlternatives');
+      RuleRegistry.loadRules('element');
 
-        for (var key in rules) {
-          if (rules.hasOwnProperty(key)) {
-            r.push(rules[key]);
-          }
-        }
-
-        return r;
-      };
-
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('adaptable')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('distinguishable')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('headingsAndLabels')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('inputAssistance')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('linkPurpose')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('navigable')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('pageTitled')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('readable')));
-      this.rules.push.apply(this.rules, getRulesFromGuideline(RuleFactory.makeRule('textAlternatives')));
-
-      this.rules.push(RuleFactory.makeRule('belement'));
-      this.rules.push(RuleFactory.makeRule('blinkelement'));
-      this.rules.push(RuleFactory.makeRule('marqueeelement'));
-      this.rules.push(RuleFactory.makeRule('fontelement'));
-      this.rules.push(RuleFactory.makeRule('ielement'));
-      this.rules.push(RuleFactory.makeRule('uelement'));
+      this.rules = _.values(RuleRegistry.rulesMap);
     },
 
     getRules: function() {
@@ -80,7 +62,7 @@ AriaLinter.prototype = (function() {
       var r = [];
 
       for (var x = 0; x < len; x++) {
-        r.push(this.rules[x].name + ' .Level: ' + this.rules[x].level + ' .Template: ' + this.rules[x].template);
+        r.push(this.rules[x].id + '. Level: ' + this.rules[x].level + '. Template: ' + this.rules[x].template);
       }
 
       return r;
@@ -94,20 +76,11 @@ AriaLinter.prototype = (function() {
       return this.formatters[formatId];
     },
 
-    /**
-     * Formats the results in a particular format for a single file.
-     * @param {Object} result The results returned from CSSLint.verify().
-     * @param {String} filename The filename for which the results apply.
-     * @param {String} formatId The name of the formatter to use.
-     * @param {Object} options (Optional) for special output handling.
-     * @return {String} A formatted string for the results.
-     * @method format
-     */
     format: function(results, filename, formatId, options) {
       var formatter = this.getFormatter(formatId),
         result = null;
 
-      if (formatter){
+      if (formatter) {
         result = formatter.startFormat();
         result += formatter.formatResults(results, filename, options || {});
         result += formatter.endFormat();
@@ -120,46 +93,60 @@ AriaLinter.prototype = (function() {
       return this.dom;
     },
 
-    getReport: function(format) {
-      return this.format(this.Reporter.getMessages(), this.getDom(), format);
+    getReport: function(format, filename) {
+      return this.format(this.Reporter.getMessages(), filename, format);
     },
 
-    evaluate: function(options) {
-      var indexOfRules = this.rules.length;
-      this.Reporter.initialize();
+    getErrorsFound: function(format) {
+      return this.Reporter.getMessages().length;
+    },
 
-      for (var x = 0; x < indexOfRules; x++) {
-        if (options) {
-          if ((options.level) && (!options.template) && (options.level === this.rules[x].level)) {
-            // Apply only for levels
-            this.rules[x].applyRule(this.getDom(), this.Reporter);
-          } else {
-            if ((options.template) && (!options.level) && (options.template === this.rules[x].template)) {
-              //apply only for templates
-              this.rules[x].applyRule(this.getDom(), this.Reporter);
-            } else {
-              if ((options.template) && (options.level) &&
-                  (options.template === this.rules[x].template) &&
-                  (options.level === this.rules[x].level)) {
-                // For templates with levels
-                this.rules[x].applyRule(this.getDom(), this.Reporter);
-              }
-            }
+    calculateRulesToApply: function(options) {
+      var rulesCriteria;
+      var basicCriteria;
+      var result;
+
+      if (!options) {
+        return this.rules;
+      }
+
+      basicCriteria = _.pick(options, 'level', 'template');
+      result = _.where(this.rules, basicCriteria);
+
+      // console.log('First rule filter ' + JSON.stringify(_.pluck(result, 'id')));
+      rulesCriteria = options.rules;
+      for (var ruleId in rulesCriteria) {
+        if (rulesCriteria.hasOwnProperty(ruleId)) {
+          var ruleIndex = _.findIndex(result, {
+            id: ruleId
+          });
+          if (rulesCriteria[ruleId] && ruleIndex === -1) {
+            result.push(RuleRegistry.getRule(ruleId));
           }
-        } else {
-          // Apply all the rules
-          this.rules[x].applyRule(this.getDom(), this.Reporter);
+          if (!rulesCriteria[ruleId] && ruleIndex !== -1) {
+            result.splice(ruleIndex, 1);
+          }
         }
       }
 
-      if (!this.Reporter.hasMessages()) {
-        return true;
-      } else {
-        return false;
+      //console.log('Second rule filter ' + JSON.stringify(_.pluck(result, 'id')));
+
+      return result;
+    },
+
+    evaluate: function(options) {
+      this.Reporter.initialize();
+
+      var rulesToApply = this.calculateRulesToApply(options);
+
+      for (var i = 0; i < rulesToApply.length; i++) {
+        rulesToApply[i].applyRule(this.getDom(), this.Reporter);
       }
+
+      return !this.Reporter.hasMessages();
     }
   };
+
+  module.exports = AriaLinter;
+
 })();
-
-
-exports.AriaLinter = AriaLinter;

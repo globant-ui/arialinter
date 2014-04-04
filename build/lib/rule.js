@@ -6,41 +6,40 @@
  * Licensed under the MIT license.
  */
 
-var Rule = function(options) {
+(function() {
   'use strict';
 
-  this.name     = options.name;
-  this.callback = options.callback;
-  this.message  = options.message;
-  this.ruleUrl  = options.ruleUrl;
-  this.level    = options.level;
-  this.template = options.template;
-};
+  function Rule(options) {
+    this.id       = options.id;
+    this.name     = options.name;
+    this.callback = options.callback;
+    this.message  = options.message;
+    this.ruleUrl  = options.ruleUrl;
+    this.level    = options.level;
+    this.template = options.template;
+  };
 
-Rule.prototype.applyRule = function(dom, reporter) {
-  'use strict';
+  Rule.prototype.applyRule = function(dom, reporter) {
+    try {
+      this.callback(dom);
+      return true;
+    }
+    catch(e) {
+      if (e && e.reportType) {
+        reporter[e.reportType](e.el, this);
+      }
+      return e;
+    }
+  };
 
-  try {
-    this.callback(dom, reporter);
-    return true;
-  }
-  catch(e) {
-    return e;
-  }
-};
+  Rule.prototype.getName = function() {
+    return this.name;
+  };
 
-Rule.prototype.getName = function() {
-  'use strict';
+  Rule.prototype.getMessage = function() {
+    return this.message;
+  };
 
-  return this.name;
-};
+  module.exports = Rule;
 
-Rule.prototype.getMessage = function() {
-  'use strict';
-
-  return this.message;
-};
-
-
-
-exports.Rule = Rule;
+}());

@@ -2,98 +2,91 @@
 /*
   Missing rules:
     10, 11, 12
-
 */
 
-var Rule = require('../rule').Rule;
+(function() {
+  'use strict';
 
-var adaptable = {
-  tableHasSummary: new Rule({
-    name:    'Data tables must use summary attribute',
+  var Rule = require('../rule');
 
-    message: 'Please add the summary attribute to this table',
+  module.exports = {
+    tableHasSummary: new Rule({
+      name:    'Data tables must use summary attribute',
 
-    ruleUrl: 'http://oaa-accessibility.org/rule/3/',
+      message: 'Please add the summary attribute to this table',
 
-    level: 'A',
+      ruleUrl: 'http://oaa-accessibility.org/rule/3/',
 
-    template: true,
+      level: 'A',
 
-    callback: function(dom, reporter) {
-      'use strict';
+      template: true,
 
-      var that = this;
+      callback: function(dom, reporter) {
+        dom.$('table').each(function() {
+          if (!dom.$(this).attr('summary')) {
+            throw {
+              reportType: 'error',
+              el: dom.$(this).parent().html()
+            };
+          }
+        });
+      }
+    }),
 
-      dom.$('table').each(function() {
-        if (!dom.$(this).attr('summary')) {
-          reporter.error(that.message, 0, that.name);
+    tableMustHaveTh: new Rule({
+      name:    'Data tables must use th elements',
 
-          throw dom.$(this).parent().html();
-        }
-      });
-    }
-  }),
+      message: 'Data tables must use th elements to indicate header cells for the first cell in all the columns or rows',
 
-  tableMustHaveTh: new Rule({
-    name:    'Data tables must use th elements',
+      ruleUrl: 'http://oaa-accessibility.org/rule/4/',
 
-    message: 'Data tables must use th elements to indicate header cells for the first cell in all the columns or rows',
+      level: 'A',
 
-    ruleUrl: 'http://oaa-accessibility.org/rule/4/',
+      template: true,
 
-    level: 'A',
+      callback: function(dom, reporter) {
+        dom.$('table').each(function() {
+          if (!dom.$(this).find('th')) {
+            throw {
+              reportType: 'error',
+              el: dom.$(this).parent().html()
+            };
+          }
+        });
+      }
+    }),
 
-    template: true,
+    uniqueSummaryAttr: new Rule({
+      name:    'Summary attribute content must be unique',
 
-    callback: function(dom, reporter) {
-      'use strict';
+      message: 'The summary atribute from the tables should be unique',
 
-      var that = this;
+      ruleUrl: 'http://oaa-accessibility.org/rule/5/',
 
-      dom.$('table').each(function() {
+      level: 'A',
 
-        if (!dom.$(this).find('th')) {
-          reporter.error(that.message, 0, that.name);
+      template: true,
 
-          throw dom.$(this).parent().html();
-        }
-      });
-    }
-  }),
+      callback: function(dom, reporter) {
+        var s = [];
 
-  uniqueSummaryAttr: new Rule({
-    name:    'Summary attribute content must be unique',
+        dom.$('table').each(function() {
 
-    message: 'The summary atribute from the tables should be unique',
+          var e = dom.$(this).attr('summary');
 
-    ruleUrl: 'http://oaa-accessibility.org/rule/5/',
+          if (s.indexOf(e) === -1) {
+            s.push(e);
+          } else {
+            throw {
+              reportType: 'error',
+              el: dom.$(this).parent().html()
+            };
+          }
 
-    level: 'A',
+        });
 
-    template: true,
+      }
+    })
 
-    callback: function(dom, reporter) {
-      'use strict';
-
-      var that = this;
-      var s = [];
-
-      dom.$('table').each(function() {
-
-        var e = dom.$(this).attr('summary');
-
-        if (s.indexOf(e) > -1) {
-          s.push(e);
-        } else {
-          reporter.error(that.message, 0, that.name);
-          throw dom.$(this).parent().html();
-        }
-
-      });
-
-    }
-  })
-
-};
-
-module.exports = adaptable;
+  };
+}());

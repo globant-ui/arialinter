@@ -1,54 +1,51 @@
 /**
  * An instance of Report is used to report results of the verification back to the main lib.
  */
-function Reporter(){
+
+(function() {
   'use strict';
 
-  this.messages = [];
-}
-
-Reporter.prototype = {
-
-  //restore constructor
-  constructor: Reporter,
-
-  initialize: function() {
+  function Reporter() {
     this.messages = [];
-  },
+  }
 
-  error: function(message, line, rule){
+  Reporter.prototype.initialize = function() {
+      this.messages = [];
+  };
+
+  Reporter.prototype.error = function(element, rule) {
     this.messages.push({
-      type    : "error",
-      line    : line,
-      message : message,
-      rule    : rule || {}
+      type: 'error',
+      element: element,
+      rule: rule
     });
-  },
+  };
 
-  info: function(message, line, rule){
+  Reporter.prototype.info = function(element, rule) {
     this.messages.push({
-      type    : "info",
-      line    : line,
-      message : message,
-      rule    : rule
+      type: 'info',
+      element: element,
+      rule: rule
     });
-  },
+  };
 
-  getMessages: function() {
+  Reporter.prototype.getMessages = function() {
     return this.messages;
-  },
+  };
 
-  hasMessages: function() {
+  Reporter.prototype.hasMessages = function() {
     return (this.messages.length !== 0);
-  },
+  };
 
-  print: function() {
+  Reporter.prototype.print = function() {
     var len = this.messages.length;
 
-    for (var x = 0; x < len; x++){
-      console.log(this.messages[x]);
+    for (var i = 0; i < len; i++) {
+      console.log(this.element);
+      console.log(this.messages[i].message);
     }
-  }
-};
+  };
 
-module.exports = new Reporter();
+  module.exports = new Reporter();
+
+}());
