@@ -3,11 +3,7 @@
 AriaLinter goal is twofold:
 * provide a simple accessibility linter for HTML documents
 * provide a Grunt task based on the linter in order to integrate accesibility best practices
-right into the developer workflow
-
-## Demo
-
-The demo is currently deployed in http://arialinter.aws.af.cm/.
+right into the build system
 
 
 ## Getting Started
@@ -33,16 +29,16 @@ Afterwards, files, markup, and url's can be linted:
 ```js
 grunt.initConfig({
   arialinter: {
-    files: [
-      'https://www.google.com/',
-      './templates/*.html',
-      '<!doctype html><html lang="en"><head><title>titulo test</title></head><body style="background-color: white;"> <h1 style="color: black;">hola</h1><img src="asdf.jpg" alt="woop" /> <div class="entry"> <p>{{title}}</p> <h2>By {{author.name}}</h2> <div class="body">{{body}}</div></div> </body> </html>'
-    ],
-    options: {
-      templates: true,
-      levels: 'A'
+      files: ['partials/**/*.html', 'components/**/*.hbs'],
+      options: {
+        level: 'A',
+        templates: true,
+        rules: {
+          contrastMinimum: false,
+          doNotUseElementBlink: true
+        }
+      }
     }
-  }
 });
 
 grunt.registerTask('default', ['arialinter']);
@@ -53,6 +49,7 @@ Options:
 that can be checked against a static HTML template. Rules that require checking the correct event-handlers or any other
 dynamic condition wont be run. By contrast, if templates is **false** then all rules will be run
 * levels: indicates which rules will be run according to the level they belong to. If you dont specify any level, it'' run for all the levels.
+* rules: enable or disable a given rule. Overwrites level option.
 
 ### Nodejs
 
