@@ -5,11 +5,6 @@ AriaLinter goal is twofold:
 * provide a Grunt task based on the linter in order to integrate accesibility best practices
 right into the developer workflow
 
-## Demo
-
-The demo is currently deployed in http://arialinter.aws.af.cm/.
-
-
 ## Getting Started
 
 ### Grunt task
@@ -68,13 +63,13 @@ Then, using arialinter, is as easy as:
 
 ```javascript
 var AriaLinter = require('arialinter');
-var linter = new AriaLinter();
 
-linter.initialize(fileOrUrl, function() {
-  if (linter.evaluate()){
-    console.log('success');
+AriaLinter.initialize('https://github.com/', function() {
+  if (AriaLinter.evaluate()){
+    console.log('All rules were successfully passed');
   } else {
-    console.log('failed');
+    console.log('AriaLinter found ' + AriaLinter.getErrorsFound() + ' accessibility issues');
+    console.log(AriaLinter.getReport('text', 'https://github.com/'));
   }
 });
 ```
@@ -83,13 +78,13 @@ You can also pass an options argument to the evaluate() method:
 
 ```javascript
 var AriaLinter = require('arialinter');
-var linter = new AriaLinter();
 
-linter.initialize(fileOrUrl, function() {
-  if (linter.evaluate({level: 'A', template: true})){
-    console.log('success');
+AriaLinter.initialize('https://github.com/', function() {
+  if (AriaLinter.evaluate({level: 'A', template: true})){
+    console.log('All rules were successfully passed');
   } else {
-    console.log('failed');
+    console.log('AriaLinter found ' + AriaLinter.getErrorsFound() + ' accessibility issues');
+    console.log(AriaLinter.getReport('text', 'https://github.com/'));
   }
 });
 ```
@@ -127,9 +122,9 @@ $ arialinter --level A --templates test/testFiles/index.html
 ```
 
 ##Related projects:
-* [A11YLint](https://github.com/DuaneOBrien/A11YLint-Brackets). A11YLint is an extension for the Brackets IDE which 
-aims to bring the same kind of in-context, immediate feedback that you get from JSLint/JSHint and other linting tools, 
-but regarding issues in your HTML that would affect how accessible your content is. 
+* [A11YLint](https://github.com/DuaneOBrien/A11YLint-Brackets). A11YLint is an extension for the Brackets IDE which
+aims to bring the same kind of in-context, immediate feedback that you get from JSLint/JSHint and other linting tools,
+but regarding issues in your HTML that would affect how accessible your content is.
 
 ##Resources:
 * Accessibility

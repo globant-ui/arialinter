@@ -1,7 +1,7 @@
 {
   "name": "arialinter",
   "description": "AriaLinter provides a simple accesibility linter for HTML documents.",
-  "version": "0.2.7",
+  "version": "0.3.1",
   "homepage": "https://github.com/globant-ui/arialinter",
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "async": "*",
     "colors": "*",
     "commander": "*",
-    "color": "*"
+    "color": "*",
+    "lodash": "2.4.1"
   },
   "keywords": []
 }
