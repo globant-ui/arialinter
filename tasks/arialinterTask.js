@@ -42,7 +42,7 @@
               callback();
             } else {
               hasErrors = true;
-              console.log(AriaLinter.getReport('text', uri));
+              console.log(AriaLinter.getReport('text', uri, options));
               callback();
             }
           });
@@ -57,6 +57,7 @@
         config.template = true;
         delete config.templates;
       }
+
 
       executeLinter(this.filesSrc, done, config);
     });
