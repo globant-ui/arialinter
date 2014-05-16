@@ -1,6 +1,19 @@
 'use strict';
 
-var AriaLinter = require('../lib/arialinter.js');
+var AriaLinter = require('../lib/arialinter.js'),
+    RuleRegistry = require('../lib/ruleregistry'),
+    jsdom = require('jsdom');
+
+RuleRegistry.loadRules('adaptable');
+RuleRegistry.loadRules('distinguishable');
+RuleRegistry.loadRules('headingsAndLabels');
+RuleRegistry.loadRules('inputAssistance');
+RuleRegistry.loadRules('linkPurpose');
+RuleRegistry.loadRules('navigable');
+RuleRegistry.loadRules('pageTitled');
+RuleRegistry.loadRules('readable');
+RuleRegistry.loadRules('textAlternatives');
+RuleRegistry.loadRules('element');
 
 /*
   ======== A Handy Little Nodeunit Reference ========
@@ -88,6 +101,24 @@ exports['General Rules'] = {
     var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><table></table></body> </html>';
     AriaLinter.initialize(uri, function(){
       test.equal(AriaLinter.evaluate(), false, 'Should fail because the table doenst have summary');
+      test.done();
+    });
+  },
+
+  'TablemustHaveThFailure': function(test) {
+    var rule = RuleRegistry.getRule('tableMustHaveTh');
+
+    jsdom.env('test/testFiles/adaptable/tableMustHaveThFailure.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because the table doesnt use th elements');
+      test.done();
+    });
+  },
+
+  'TablemustHaveThSuccess': function(test) {
+    var rule = RuleRegistry.getRule('tableMustHaveTh');
+
+    jsdom.env('test/testFiles/adaptable/tableMustHaveThSuccess.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.equal(rule.applyRule(window), true, 'Should pass because the tables use th elements properly');
       test.done();
     });
   }
