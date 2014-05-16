@@ -82,16 +82,18 @@ exports['General Rules'] = {
   },
 
   'HaveUElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has u element');
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementU');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has u element');
       test.done();
     });
   },
 
   'doNotUseElementBlink': function(test){
-      var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
-          rule = RuleRegistry.getRule('doNotUseElementBlink');
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementBlink');
 
     jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
       test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
