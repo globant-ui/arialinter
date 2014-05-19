@@ -58,9 +58,11 @@ exports['General Rules'] = {
   },
 
   'HaveIElement': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has i element');
+    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementI');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has i element');
       test.done();
     });
   },
