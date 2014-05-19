@@ -41,58 +41,71 @@ exports['General Rules'] = {
     done();
   },
 
-  'HaveAltAttr': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'All the images should have the alt attr');
-      test.done();
-    });
-  },
-
   'DoesntHaveAltAttr': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test1 mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="ads"/><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because images doesnt have alt');
+    var uri = '<!doctype html><html lang="en"><head><title>test1 mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3"/><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>',
+        rule = RuleRegistry.getRule('validAltText');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because images dont have alt attribute');
       test.done();
     });
   },
 
   'HaveIElement': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has i element');
+    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementI');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has i element');
       test.done();
     });
   },
 
   'DoesntHaveLangAttr': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because html tag doesnt have lang attribute');
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>',
+        rule = RuleRegistry.getRule('htmlLang');
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because html tag doesnt have lang attribute');
       test.done();
     });
   },
 
   'HaveBElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <b>asdf</b> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has b element');
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <b>asdf</b> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementB');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has b element');
       test.done();
     });
   },
 
   'HaveUElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has u element');
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementU');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has u element');
       test.done();
     });
   },
 
-  'HaveMarqueeBlinkElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because it has marquee and blink elements');
+  'doNotUseElementBlink': function(test){
+    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
+        rule = RuleRegistry.getRule('doNotUseElementBlink');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
+      test.done();
+    });
+  },
+
+  'doNotUseElementMarquee': function(test){
+      var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
+          rule = RuleRegistry.getRule('doNotUseElementMarquee');
+
+    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
       test.done();
     });
   },
