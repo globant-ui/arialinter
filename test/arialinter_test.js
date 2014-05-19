@@ -41,14 +41,6 @@ exports['General Rules'] = {
     done();
   },
 
-  'HaveAltAttr': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="dd" /><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'All the images should have the alt attr');
-      test.done();
-    });
-  },
-
   'DoesntHaveAltAttr': function(test) {
     var uri = '<!doctype html><html lang="en"><head><title>test1 mundo</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3"/><img src="http://dummyimage.com/600x400.gif/292929/e3e3e3" alt="asd" /></body> </html>',
         rule = RuleRegistry.getRule('validAltText');
