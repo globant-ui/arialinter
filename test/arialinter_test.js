@@ -1,10 +1,8 @@
 'use strict';
 
-var AriaLinter = require('../lib/arialinter.js'),
-    RuleRegistry = require('../lib/ruleregistry'),
+var RuleRegistry = require('../lib/ruleregistry'),
     jsdom = require('jsdom');
 
-RuleRegistry.loadRules('adaptable');
 RuleRegistry.loadRules('distinguishable');
 RuleRegistry.loadRules('headingsAndLabels');
 RuleRegistry.loadRules('inputAssistance');
@@ -106,32 +104,6 @@ exports['General Rules'] = {
 
     jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
       test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
-      test.done();
-    });
-  },
-
-  'tableHasSummary': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1><table></table></body> </html>';
-    AriaLinter.initialize(uri, function(){
-      test.equal(AriaLinter.evaluate(), false, 'Should fail because the table doenst have summary');
-      test.done();
-    });
-  },
-
-  'TablemustHaveThFailure': function(test) {
-    var rule = RuleRegistry.getRule('tableMustHaveTh');
-
-    jsdom.env('test/testFiles/adaptable/tableMustHaveThFailure.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
-      test.notEqual(rule.applyRule(window), true, 'Should fail because the table doesnt use th elements');
-      test.done();
-    });
-  },
-
-  'TablemustHaveThSuccess': function(test) {
-    var rule = RuleRegistry.getRule('tableMustHaveTh');
-
-    jsdom.env('test/testFiles/adaptable/tableMustHaveThSuccess.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
-      test.equal(rule.applyRule(window), true, 'Should pass because the tables use th elements properly');
       test.done();
     });
   }
