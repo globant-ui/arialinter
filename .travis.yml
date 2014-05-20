@@ -1,6 +1,5 @@
 language: node_js
-cache: false
 node_js:
-  - "0.10"
+  - "0.10.24"
 before_script:
   - npm install -g grunt-cli
