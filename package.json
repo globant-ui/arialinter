@@ -34,11 +34,11 @@
   },
   "dependencies": {
     "grunt": "~0.4.0",
-    "jsdom": "*",
-    "async": "*",
-    "commander": "*",
-    "color": "*",
-    "colors": "*",
+    "jsdom": "~0.10.4",
+    "async": "~0.8.0",
+    "commander": "~2.1.0",
+    "color": "~0.6.0",
+    "colors": "~0.6.2",
     "lodash": "2.4.1"
   },
   "peerDependencies": {
