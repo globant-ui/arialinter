@@ -8,51 +8,46 @@ RuleRegistry.loadRules('element');
 exports['element rules'] = {
 
   'HaveIElement': function(test) {
-    var uri = '<!doctype html><html lang="en"><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <i>asdf</i> </body> </html>',
-        rule = RuleRegistry.getRule('doNotUseElementI');
+    var rule = RuleRegistry.getRule('doNotUseElementI');
 
-    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+    jsdom.env('test/rules/element/HaveIElement.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
       test.notEqual(rule.applyRule(window), true, 'Should fail because it has i element');
       test.done();
     });
   },
 
   'HaveBElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <b>asdf</b> </body> </html>',
-        rule = RuleRegistry.getRule('doNotUseElementB');
+    var rule = RuleRegistry.getRule('doNotUseElementB');
 
-    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+    jsdom.env('test/rules/element/HaveBElement.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
       test.notEqual(rule.applyRule(window), true, 'Should fail because it has b element');
       test.done();
     });
   },
 
   'HaveUElement': function(test) {
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <u>asdf</u> </body> </html>',
-        rule = RuleRegistry.getRule('doNotUseElementU');
+    var rule = RuleRegistry.getRule('doNotUseElementU');
 
-    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+    jsdom.env('test/rules/element/HaveUElement.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
       test.notEqual(rule.applyRule(window), true, 'Should fail because it has u element');
       test.done();
     });
   },
 
   'doNotUseElementBlink': function(test){
-    var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
-        rule = RuleRegistry.getRule('doNotUseElementBlink');
+    var rule = RuleRegistry.getRule('doNotUseElementBlink');
 
-    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
-      test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
+    jsdom.env('test/rules/element/HaveBlinkElement.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has blink elements');
       test.done();
     });
   },
 
   'doNotUseElementMarquee': function(test){
-      var uri = '<!doctype html><html><head><title>test hola</title></head><body style="background-color: white;"> <h1 style="color: black;">hola mundo</h1> <marquee>asdf</marquee> <blink>wooop</blink> </body> </html>',
-          rule = RuleRegistry.getRule('doNotUseElementMarquee');
+      var rule = RuleRegistry.getRule('doNotUseElementMarquee');
 
-    jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
-      test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee and blink elements');
+    jsdom.env('test/rules/element/HaveMarqueeElement.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.notEqual(rule.applyRule(window), true, 'Should fail because it has marquee elements');
       test.done();
     });
   }
