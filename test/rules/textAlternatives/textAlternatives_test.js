@@ -14,6 +14,15 @@ exports['textAlternatives rules'] = {
       test.notEqual(rule.applyRule(window), true, 'Should fail because images dont have alt attribute');
       test.done();
     });
+  },
+
+  'HaveEmptyAltAttr': function(test) {
+    var rule = RuleRegistry.getRule('validAltText');
+
+    jsdom.env('test/rules/textAlternatives/haveEmptyAltAttr.html', ['http://code.jquery.com/jquery.js'], function (err, window) {
+      test.equal(rule.applyRule(window), true, 'Should pass because images have empty or non-empty alt attributes');
+      test.done();
+    });
   }
 
 }
