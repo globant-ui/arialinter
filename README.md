@@ -125,6 +125,7 @@ $ arialinter --level A --templates test/testFiles/index.html
 * [A11YLint](https://github.com/DuaneOBrien/A11YLint-Brackets). A11YLint is an extension for the Brackets IDE which
 aims to bring the same kind of in-context, immediate feedback that you get from JSLint/JSHint and other linting tools,
 but regarding issues in your HTML that would affect how accessible your content is.
+* [gulp-arialinter](https://github.com/Charca/gulp-arialinter). Gulp plugin for the accessibility tool AriaLinter.
 
 ##Resources:
 * Accessibility
