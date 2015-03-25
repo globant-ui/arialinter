@@ -1,14 +1,15 @@
 'use strict';
 
 var RuleRegistry = require('../../../lib/ruleregistry'),
-    jsdom = require('jsdom');
+    jsdom = require('jsdom'),
+    $ = require('jquery');
 
 function checkForPresence(test, rule, file, msg){
   var rule = RuleRegistry.getRule(rule),
       config = {
         file: __dirname+'/'+file,
-        scripts: ['http://code.jquery.com/jquery.js'],
         done: function (err, window) {
+          window.$ = $(window);
           test.notEqual(rule.applyRule(window), true, msg);
           test.done();
         }

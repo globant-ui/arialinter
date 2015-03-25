@@ -15,7 +15,8 @@
       template: false,
 
       callback: function(dom, reporter) {
-        if (!dom.$('html').attr('lang')) {
+        var lang = dom.$('html').attr('lang');
+        if (typeof lang === 'undefined' || lang === '') {
           throw {
             reportType: 'error',
             el: dom.$('html').parent().html()

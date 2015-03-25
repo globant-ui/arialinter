@@ -8,15 +8,16 @@
   var program = require('commander');
   var colors = require('colors');
 
-  var executeLinter = function(files, options) {
+  var printElement;
 
+  var executeLinter = function(files, options) {
     async.each(files, function(file, callback) {
       AriaLinter.initialize(file, function() {
         console.log(file);
         if (AriaLinter.evaluate(options)) {
           callback();
         } else {
-          console.log(AriaLinter.getReport('text', file));
+          console.log(AriaLinter.getReport('text', file, options));
           callback();
         }
       });
@@ -30,6 +31,7 @@
     .option('-r, --rules', 'List all the rules')
     .option('-l, --level <level>', 'Select the level of success criteria')
     .option('-t, --templates', 'Only executes the rules that apply for templates')
+    .option('-e, --printElement', 'Print the parent element as part of the error')
     .parse(process.argv);
 
   if (program.rawArgs.length >= 3 && program.args.length >= 0) {
@@ -45,25 +47,32 @@
         console.log('Rule: ' + rules[x]);
       }
     } else {
+      printElement = program.printElement || false;
+
       if ((program.templates) && (program.level)) {
         executeLinter(program.args, {
           level: program.level,
-          template: true
+          template: true,
+          printElement: printElement
         });
       } else {
         if (program.templates) {
           executeLinter(program.args, {
-            template: true
+            template: true,
+            printElement: printElement
           });
         }
         else {
           if (program.level) {
             executeLinter(program.args, {
-              level: program.level
+              level: program.level,
+              printElement: printElement
             });
           }
           else {
-            executeLinter(program.args);
+            executeLinter(program.args, {
+              printElement: printElement
+            });
           }
         }
       }
