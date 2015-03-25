@@ -25,7 +25,7 @@
       return true;
     }
     catch(e) {
-      if (e && e.reportType) {
+      if (reporter && e && e.reportType) {
         reporter[e.reportType](e.el, this);
       }
       return e;
