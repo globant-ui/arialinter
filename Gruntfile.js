@@ -10,7 +10,7 @@ module.exports = function(grunt) {
     },
 
     arialinter: {
-      files: ['test/testFiles/*.html', 'test/**/**.hbs'],
+      files: ['test/rules/*.html', 'test/**/**.hbs'],
       options: {
         level: 'A',
         templates: true,
