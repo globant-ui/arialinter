@@ -13,6 +13,7 @@
   var jsdom = require('jsdom');
   var RuleRegistry = require('./ruleregistry');
   var Reporter = require('./reporter');
+  var $ = require('jquery');
 
   var AriaLinter = {
 
@@ -29,7 +30,9 @@
       this.addFormatter(require('./formatters/text'));
       this.addFormatter(require('./formatters/json'));
 
-      jsdom.env(uri, ['http://code.jquery.com/jquery.js'], function (err, window) {
+      jsdom.env(uri, function (err, window) {
+        window.$ = $(window);
+
         if (!err) {
           that.dom = window;
           callback();
@@ -93,8 +96,8 @@
       return this.dom;
     },
 
-    getReport: function(format, filename) {
-      return this.format(this.Reporter.getMessages(), filename, format);
+    getReport: function(format, filename, options) {
+      return this.format(this.Reporter.getMessages(), filename, format, options);
     },
 
     getErrorsFound: function(format) {
@@ -106,7 +109,8 @@
       var basicCriteria;
       var result;
 
-      if (!options) {
+
+      if (!options || !options.level && !options.template) {
         return this.rules;
       }
 
@@ -142,7 +146,6 @@
       for (var i = 0; i < rulesToApply.length; i++) {
         rulesToApply[i].applyRule(this.getDom(), this.Reporter);
       }
-
       return !this.Reporter.hasMessages();
     }
   };

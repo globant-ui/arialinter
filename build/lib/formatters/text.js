@@ -25,7 +25,6 @@
 
     formatResults: function(messages, filename, options) {
       var output = '';
-
       /**
        * Capitalize and return given string.
        * @param str {String} to capitalize
@@ -43,7 +42,9 @@
 
       output += ('* File: '.bold + filename + ' has ' + len + ' error/s.\n').red;
       for (var x = 0; x < len; x++) {
-        output += messages[x].element + '\n';
+        if(options.printElement && messages[x].element ) {
+          output += messages[x].element + '\n';
+        }
         output += capitalize(messages[x].type).red + ': ';
         output += capitalize(messages[x].rule.name) + '\n';
         output += 'Description: '.red + capitalize(messages[x].rule.message) + '\n';

@@ -17,7 +17,7 @@
 
       callback: function(dom) {
         dom.$('img').each(function() {
-          if (!dom.$(this).attr('alt')) {
+          if (typeof dom.$(this).attr('alt') === 'undefined') {
             throw {
               reportType: 'error',
               el: dom.$(this).parent().html()
