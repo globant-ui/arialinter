@@ -1,3 +1,5 @@
+###--This Package has been **deprecated** as we can not longer mantain it.--
+
 AriaLinter [![Build Status](https://api.travis-ci.org/globant-ui/arialinter.png?branch=master)](http://travis-ci.org/globant-ui/arialinter) ![Dependencies](https://david-dm.org/globant-ui/arialinter.png)
 ============
 AriaLinter goal is twofold:
